@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>GameDevLibrary</RootNamespace>
+        <Version>0.0.2</Version>
+        <Title>Omega Leo's Helper Library</Title>
+        <Authors>Nuno "Omega Leo" Diogo</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="UnityFlow.DocumentationHelper.Library" Version="1.1.2" />
+    </ItemGroup>
+
+</Project>
