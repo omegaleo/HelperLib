@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using NetFlow.DocumentationHelper.Library.Attributes;
 
 namespace GameDevLibrary.Models
 {
     // Inspiration: https://www.youtube.com/watch?v=x-ejym1WdjE
     [Serializable]
+    [Documentation("NeoDictionary", "Dictionary like class created to make it easier to display dictionaries in game engines like Unity")]
     public class NeoDictionary<TKey,TValue>
     {
         public List<NeoDictionaryItem<TKey, TValue>> Items = new List<NeoDictionaryItem<TKey, TValue>>();
@@ -66,6 +68,28 @@ namespace GameDevLibrary.Models
         public bool Any() => Items.Any();
 
         public bool Any(Func<NeoDictionaryItem<TKey, TValue>, bool> predicate) => Items.Any(predicate);
+
+        public IEnumerable<NeoDictionaryItem<TKey, TValue>> Where(Func<NeoDictionaryItem<TKey, TValue>, bool> predicate) =>
+            Items.Where(predicate);
+
+        public NeoDictionaryItem<TKey, TValue>? FirstOrDefault() => Items.FirstOrDefault();
+
+        public NeoDictionaryItem<TKey, TValue>? FirstOrDefault(Func<NeoDictionaryItem<TKey, TValue>, bool> predicate) =>
+            Items.FirstOrDefault(predicate);
+        
+        public NeoDictionaryItem<TKey, TValue>? LastOrDefault() => Items.LastOrDefault();
+
+        public NeoDictionaryItem<TKey, TValue>? LastOrDefault(Func<NeoDictionaryItem<TKey, TValue>, bool> predicate) =>
+            Items.LastOrDefault(predicate);
+
+        public void Remove(TKey key)
+        {
+            var index = Items.FindIndex(x => x.Key.Equals(key));
+            
+            Items.RemoveAt(index);
+        }
+
+        public void RemoveAt(int index) => Items.RemoveAt(index);
     }
 
     [Serializable]
