@@ -90,6 +90,54 @@ namespace GameDevLibrary.Models
         }
 
         public void RemoveAt(int index) => Items.RemoveAt(index);
+
+        public void Replace(TKey key, TValue value)
+        {
+            if (HasKey(key))
+            {
+                this[key] = value;
+            }
+        }
+
+        public bool HasKey(TKey key) => Items.Any(x => x.Key.Equals(key));
+        
+        public TValue this[TKey key]
+        {
+            get
+            {
+                if (Items == null)
+                {
+                    Items = new List<NeoDictionaryItem<TKey, TValue>>();
+                    Items.Add(new NeoDictionaryItem<TKey, TValue>(key, (TValue)Activator.CreateInstance(typeof(TValue))));
+                }
+                
+                try
+                {
+                    var value = Items.FirstOrDefault(x => EqualityComparer<TKey>.Default.Equals(x.Key, key))!.Value;
+
+                    return value ?? (TValue)Activator.CreateInstance(typeof(TValue));
+                }
+                catch (Exception e)
+                {
+                    return (TValue)Activator.CreateInstance(typeof(TValue));
+                }
+            }
+            set
+            {
+                if (HasKey(key))
+                {
+                    var item = Items.FirstOrDefault(x => EqualityComparer<TKey>.Default.Equals(x.Key, key));
+                    var index = Items.IndexOf(item);
+                    Items[index] = new NeoDictionaryItem<TKey, TValue>(key, value);
+                }
+                else
+                {
+                    Items.Add(new NeoDictionaryItem<TKey, TValue>(key, value));
+                }
+            }
+        }
+
+        public void Clear() => Items.Clear();
     }
 
     [Serializable]
