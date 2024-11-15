@@ -3,6 +3,7 @@
 // /media/omegaleo/Development/Library Dev/HelperLib
 
 using GameDevLibrary.Extensions;
+using LibGit2Sharp;
 using OmegaLeo.HelperLib.Git;
 using OmegaLeo.HelperLib.Git.Models;
 
@@ -18,9 +19,46 @@ var git = new GitClient(repo);
 
 var changes = git.GetChanges();
 
-if (changes != null)
+if (changes.FolderName.IsNotNullOrEmpty())
 {
     RecursiveOutput(new List<ChangeFolder>() { changes });
+
+    Console.WriteLine(new string('=', 20));
+    Console.WriteLine("What do you want to do in this repository?");
+    Console.WriteLine("1. Commit all changes");
+
+    if (int.TryParse(Console.ReadLine(), out var option))
+    {
+        while (option != 0)
+        {
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Write the commit message");
+                    var msg = Console.ReadLine();
+
+                    while (msg.IsNullOrEmpty())
+                    {
+                        Console.WriteLine("Empty message detected, please write a commit message...");
+                        msg = Console.ReadLine();
+                    }
+                    
+                    var signature = new Signature("Nuno 'Omega Leo' Diogo", "nunodiogo@omegaleo.pt", DateTimeOffset.Now);
+                    git.Commit(msg, signature);
+                    
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option!");
+                    break;
+            }
+            
+            int.TryParse(Console.ReadLine(), out option);
+        }
+    }
+}
+else
+{
+    Console.WriteLine("No changes found in specified repository");
 }
 
 Console.ReadLine();
@@ -30,7 +68,7 @@ void RecursiveOutput(List<ChangeFolder> folders, int depth = 0)
 {
     foreach (var folder in folders)
     {
-        Console.WriteLine($"{new string('\t', depth + 1)}>{folder.FolderName}");
+        Console.WriteLine($"{new string('\t', depth)}>{folder.FolderName}");
         if (folder.SubFolders.Any())
         {
             RecursiveOutput(folder.SubFolders, depth + 1);
@@ -38,7 +76,7 @@ void RecursiveOutput(List<ChangeFolder> folders, int depth = 0)
 
         foreach (var change in folder.ChangesInFolder)
         {
-            Console.WriteLine($"{new string('\t', depth + 2)}>{Path.GetFileName(change.Path)} ({change.Status})");
+            Console.WriteLine($"{new string('\t', depth + 1)}>{Path.GetFileName(change.Path)} ({change.Status})");
         }
     }
 }

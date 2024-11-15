@@ -50,8 +50,6 @@ namespace OmegaLeo.HelperLib.Git
                 allChanges.AddRange(changes.Deleted);
 
                 var uniqueFolderPaths = allChanges.Select(x => Path.GetDirectoryName(x.Path)).Distinct();
-
-                
                 
                 foreach (var path in uniqueFolderPaths)
                 {
@@ -96,6 +94,24 @@ namespace OmegaLeo.HelperLib.Git
             }
             
             return folder;
+        }
+
+        public void Commit(string message, Signature author)
+        {
+            if (HasChanges())
+            {
+                var changes = _repo.Diff.Compare<TreeChanges>();
+                var allChanges = new List<TreeEntryChanges>();
+                allChanges.AddRange(changes.Added);
+                allChanges.AddRange(changes.Modified);
+                allChanges.AddRange(changes.Deleted);
+
+                var filePaths = allChanges.Select(x => x.Path).Where(x => x.IsNotNullOrEmpty());
+                
+                Commands.Stage(_repo, filePaths);
+            }
+            
+            _repo.Commit(message, author, author);
         }
     }
 }
