@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib", "OmegaLeo.HelperLib\OmegaLeo.HelperLib.csproj", "{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Git", "OmegaLeo.HelperLib.Git\OmegaLeo.HelperLib.Git.csproj", "{A9579FFB-9A05-4EBF-B298-513C48FB0F91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.ConsoleApp", "OmegaLeo.HelperLib.ConsoleApp\OmegaLeo.HelperLib.ConsoleApp.csproj", "{3B77B177-FD47-470A-B0EF-01EF8B30CE09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
