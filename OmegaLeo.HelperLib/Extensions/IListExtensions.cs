@@ -98,7 +98,7 @@ namespace GameDevLibrary.Extensions
             return values;
         }
         
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
+        /*public static IEnumerable<TSource> DistinctBy<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             HashSet<TKey> seenKeys = new HashSet<TKey>();
@@ -109,7 +109,7 @@ namespace GameDevLibrary.Extensions
                     yield return element;
                 }
             }
-        }
+        }*/
 
         
         // Idea obtained from TaroDev's video on things to do in Unity - https://youtu.be/Ic5ux-tpkCE?t=302

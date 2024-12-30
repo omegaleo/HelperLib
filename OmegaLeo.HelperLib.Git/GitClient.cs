@@ -113,5 +113,18 @@ namespace OmegaLeo.HelperLib.Git
             
             _repo.Commit(message, author, author);
         }
+
+        public void Push()
+        {
+            try {
+                var remote = _repo.Network.Remotes["origin"];
+                var options = new PushOptions();
+                var pushRefSpec = @"refs/heads/master";
+               _repo.Network.Push(remote, new string[] {pushRefSpec}, options);
+            }
+            catch (Exception e) {
+                Console.WriteLine("Exception:RepoActions:PushChanges " + e.Message);
+            }
+        }
     }
 }

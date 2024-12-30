@@ -23,13 +23,12 @@ if (changes.FolderName.IsNotNullOrEmpty())
 {
     RecursiveOutput(new List<ChangeFolder>() { changes });
 
-    Console.WriteLine(new string('=', 20));
-    Console.WriteLine("What do you want to do in this repository?");
-    Console.WriteLine("1. Commit all changes");
-
-    if (int.TryParse(Console.ReadLine(), out var option))
+    var option = 99;
+    
+    while (option != 0)
     {
-        while (option != 0)
+        ShowOptions();
+        if (option != 99)
         {
             switch (option)
             {
@@ -47,13 +46,16 @@ if (changes.FolderName.IsNotNullOrEmpty())
                     git.Commit(msg, signature);
                     
                     break;
+                case 2:
+                    git.Push();
+                    break;
                 default:
                     Console.WriteLine("Invalid Option!");
                     break;
             }
-            
-            int.TryParse(Console.ReadLine(), out option);
         }
+            
+        int.TryParse(Console.ReadLine(), out option);
     }
 }
 else
@@ -79,4 +81,13 @@ void RecursiveOutput(List<ChangeFolder> folders, int depth = 0)
             Console.WriteLine($"{new string('\t', depth + 1)}>{Path.GetFileName(change.Path)} ({change.Status})");
         }
     }
+}
+
+void ShowOptions()
+{
+    Console.Clear();
+    Console.WriteLine(new string('=', 20));
+    Console.WriteLine("What do you want to do in this repository?");
+    Console.WriteLine("1. Commit all changes");
+    Console.WriteLine("2. Push");
 }
