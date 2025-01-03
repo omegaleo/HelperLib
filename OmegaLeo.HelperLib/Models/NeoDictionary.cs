@@ -82,7 +82,7 @@ namespace GameDevLibrary.Models
         public NeoDictionaryItem<TKey, TValue>? LastOrDefault(Func<NeoDictionaryItem<TKey, TValue>, bool> predicate) =>
             Items.LastOrDefault(predicate);
         
-        public IEnumerable<NeoDictionaryItem<TKey, TValue>> Select<TResult>(Func<NeoDictionaryItem<TKey, TValue>, NeoDictionaryItem<TKey, TValue>> selector) =>
+        public IEnumerable<NeoDictionaryItem<TKey, TValue>> Select(Func<NeoDictionaryItem<TKey, TValue>, NeoDictionaryItem<TKey, TValue>> selector) =>
             Items.Select(selector);
 
         public void Remove(TKey key)
