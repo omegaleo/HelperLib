@@ -3,6 +3,7 @@
 // /media/omegaleo/Development/Library Dev/HelperLib
 
 using GameDevLibrary.Extensions;
+using GameDevLibrary.Helpers;
 using LibGit2Sharp;
 using OmegaLeo.HelperLib.Git;
 using OmegaLeo.HelperLib.Git.Models;
@@ -17,51 +18,57 @@ if (repo.IsNullOrEmpty())
 
 var git = new GitClient(repo);
 
-var changes = git.GetChanges();
-
-if (changes.FolderName.IsNotNullOrEmpty())
+var result = BenchmarkUtility.Record(() =>
 {
-    RecursiveOutput(new List<ChangeFolder>() { changes });
+    var changes = git.GetChanges();
 
-    var option = 99;
-    
-    while (option != 0)
+    if (changes.FolderName.IsNotNullOrEmpty())
     {
-        ShowOptions();
-        if (option != 99)
-        {
-            switch (option)
-            {
-                case 1:
-                    Console.WriteLine("Write the commit message");
-                    var msg = Console.ReadLine();
+        RecursiveOutput(new List<ChangeFolder>() { changes });
 
-                    while (msg.IsNullOrEmpty())
-                    {
-                        Console.WriteLine("Empty message detected, please write a commit message...");
-                        msg = Console.ReadLine();
-                    }
-                    
-                    var signature = new Signature("Nuno 'Omega Leo' Diogo", "nunodiogo@omegaleo.pt", DateTimeOffset.Now);
-                    git.Commit(msg, signature);
-                    
-                    break;
-                case 2:
-                    git.Push();
-                    break;
-                default:
-                    Console.WriteLine("Invalid Option!");
-                    break;
+        var option = 99;
+
+        while (option != 0)
+        {
+            ShowOptions();
+            if (option != 99)
+            {
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Write the commit message");
+                        var msg = Console.ReadLine();
+
+                        while (msg.IsNullOrEmpty())
+                        {
+                            Console.WriteLine("Empty message detected, please write a commit message...");
+                            msg = Console.ReadLine();
+                        }
+
+                        var signature = new Signature("Nuno 'Omega Leo' Diogo", "nunodiogo@omegaleo.pt",
+                            DateTimeOffset.Now);
+                        git.Commit(msg, signature);
+
+                        break;
+                    case 2:
+                        git.Push();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Option!");
+                        break;
+                }
             }
+
+            int.TryParse(Console.ReadLine(), out option);
         }
-            
-        int.TryParse(Console.ReadLine(), out option);
     }
-}
-else
-{
-    Console.WriteLine("No changes found in specified repository");
-}
+    else
+    {
+        Console.WriteLine("No changes found in specified repository");
+    }
+});
+
+Console.WriteLine($"Time for checking for changes: {result} ms");
 
 Console.ReadLine();
 
