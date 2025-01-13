@@ -36,6 +36,25 @@ namespace GameDevLibrary.Helpers
             return stopwatch.ElapsedMilliseconds;
         }
         
+        public static long RecordAndSaveToResults(string key, Action actionToRecord)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            actionToRecord.Invoke();
+            
+            stopwatch.Stop();
+            
+            if (!_benchmarks.ContainsKey(key))
+            {
+                _benchmarks[key] = new List<long>();
+            }
+            
+            _benchmarks[key].Add(stopwatch.ElapsedMilliseconds);
+            
+            return stopwatch.ElapsedMilliseconds;
+        }
+        
         public static void Start(string key)
         {
             GetStopwatch(key).Restart();
