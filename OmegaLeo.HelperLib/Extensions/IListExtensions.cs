@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace GameDevLibrary.Extensions
 {
@@ -117,5 +118,28 @@ namespace GameDevLibrary.Extensions
         {
             return array[currentIndex++ % array.Count];
         }
+        
+        /// <summary>
+        /// Shuffle around items in a list.
+        /// Code obtained from https://stackoverflow.com/a/1262619
+        /// </summary>
+        /// <param name="list"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            int n = list.Count;
+            while (n > 1)
+            {
+                byte[] box = new byte[1];
+                do provider.GetBytes(box);
+                while (!(box[0] < n * (Byte.MaxValue / n)));
+                int k = (box[0] % n);
+                n--;
+                (list[k], list[n]) = (list[n], list[k]);
+            }
+        }
+
+        
     }
 }
