@@ -125,7 +125,7 @@ namespace GameDevLibrary.Extensions
         /// </summary>
         /// <param name="list"></param>
         /// <typeparam name="T"></typeparam>
-        public static void Shuffle<T>(this IList<T> list)
+        public static IList<T> Shuffle<T>(this IList<T> list)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
             int n = list.Count;
@@ -138,6 +138,8 @@ namespace GameDevLibrary.Extensions
                 n--;
                 (list[k], list[n]) = (list[n], list[k]);
             }
+
+            return list;
         }
 
         
