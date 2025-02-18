@@ -38,10 +38,3 @@ jobs:
           git commit -m "Automatically generated changelog for v${{github.event.inputs.tagName}}"
           git tag -a "${{ github.event.inputs.tagName }}" -m "Release ${{ github.event.inputs.tagName }}"
           git push origin "${{ github.event.inputs.tagName }}"
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: '${{ github.event.inputs.tagName }}'
-          release_name: 'Release v${{ github.event.inputs.tagName }}'
