@@ -7,12 +7,18 @@
         <Version>0.0.2</Version>
         <Title>Omega Leo's Helper Library</Title>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+        <None Include="CHANGELOG.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 </Project>
