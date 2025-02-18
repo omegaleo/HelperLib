@@ -6,6 +6,7 @@ on:
         description: 'Tag name:'
         type: string
         required: true
+run-name: "Generating changelog for Release v${{github.event.inputs.tagName}}"
 jobs:
   generate_changelog:
     runs-on: ubuntu-latest
