@@ -51,7 +51,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Update Project Version
-        run: sed -i "s/\(<Version>\([0-9]\+\.\)\{2\}\)\([0-9]\+\)/\1${{ github.event.release.tag_name }}/" "./OmegaLeo.HelperLib/OmegaLeo.HelperLib.Changelog.csproj"
+        run: sed -i "s/\(<Version>\([0-9]\+\.\)\{2\}\)\([0-9]\+\)/\1${{ github.event.release.tag_name }}/" "./OmegaLeo.HelperLib.Changelog/OmegaLeo.HelperLib.Changelog.csproj"
       - name: Create Nuget Package
         run: dotnet pack "./OmegaLeo.HelperLib.Changelog/OmegaLeo.HelperLib.Changelog.csproj" -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/omegaleo/OmegaLeo.HelperLib/releases/tag/${{ github.event.release.tag_name }}"
       - name: Publish Nuget Package
