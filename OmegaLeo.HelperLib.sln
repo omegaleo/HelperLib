@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Git", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.ConsoleApp", "OmegaLeo.HelperLib.ConsoleApp\OmegaLeo.HelperLib.ConsoleApp.csproj", "{3B77B177-FD47-470A-B0EF-01EF8B30CE09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Changelog", "OmegaLeo.HelperLib.Changelog\OmegaLeo.HelperLib.Changelog.csproj", "{378D8125-66B5-42B8-9881-33F951E5E04A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.ChangelogHandler", "OmegaLeo.HelperLib.ChangelogHandler\OmegaLeo.HelperLib.ChangelogHandler.csproj", "{359536F7-02DE-43E9-A383-D83853227B0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378D8125-66B5-42B8-9881-33F951E5E04A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378D8125-66B5-42B8-9881-33F951E5E04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378D8125-66B5-42B8-9881-33F951E5E04A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378D8125-66B5-42B8-9881-33F951E5E04A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359536F7-02DE-43E9-A383-D83853227B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359536F7-02DE-43E9-A383-D83853227B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359536F7-02DE-43E9-A383-D83853227B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359536F7-02DE-43E9-A383-D83853227B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
