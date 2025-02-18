@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace GameDevLibrary.Extensions
 {
@@ -98,7 +99,7 @@ namespace GameDevLibrary.Extensions
             return values;
         }
         
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
+        /*public static IEnumerable<TSource> DistinctBy<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             HashSet<TKey> seenKeys = new HashSet<TKey>();
@@ -109,7 +110,7 @@ namespace GameDevLibrary.Extensions
                     yield return element;
                 }
             }
-        }
+        }*/
 
         
         // Idea obtained from TaroDev's video on things to do in Unity - https://youtu.be/Ic5ux-tpkCE?t=302
@@ -117,5 +118,30 @@ namespace GameDevLibrary.Extensions
         {
             return array[currentIndex++ % array.Count];
         }
+        
+        /// <summary>
+        /// Shuffle around items in a list.
+        /// Code obtained from https://stackoverflow.com/a/1262619
+        /// </summary>
+        /// <param name="list"></param>
+        /// <typeparam name="T"></typeparam>
+        public static IList<T> Shuffle<T>(this IList<T> list)
+        {
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            int n = list.Count;
+            while (n > 1)
+            {
+                byte[] box = new byte[1];
+                do provider.GetBytes(box);
+                while (!(box[0] < n * (Byte.MaxValue / n)));
+                int k = (box[0] % n);
+                n--;
+                (list[k], list[n]) = (list[n], list[k]);
+            }
+
+            return list;
+        }
+
+        
     }
 }
