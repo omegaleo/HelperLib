@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<string>
+
+<div class="text-center">
+    <h1 class="display-4">Changelog</h1>
+    @foreach (var changelog in Model)
+    {
+        <p>@Html.Raw(Markdig.Markdown.ToHtml(changelog))</p>
+        <br/>
+    }
+</div>
