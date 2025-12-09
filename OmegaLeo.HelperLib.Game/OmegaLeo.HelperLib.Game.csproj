@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <Title>Omega Leo's Helper Library	 - Game Logic</Title>
+        <Version>0.0.2</Version>
+        <Authors>Nuno "Omega Leo" Diogo</Authors>
+        <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/omegaleo/HelperLib/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OmegaLeo.HelperLib\OmegaLeo.HelperLib.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    </ItemGroup>
+
+</Project>

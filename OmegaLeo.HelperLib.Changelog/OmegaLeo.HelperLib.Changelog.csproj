@@ -18,4 +18,14 @@
         <None Include="LICENSE.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="NetFlow.DocumentationHelper.Library">
+        <HintPath>..\..\..\..\..\..\home\omegaleo\.nuget\packages\netflow.documentationhelper.library\1.1.2\lib\netstandard2.1\NetFlow.DocumentationHelper.Library.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.2" />
+    </ItemGroup>
+
 </Project>

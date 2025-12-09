@@ -1,0 +1,39 @@
+﻿@* File: `OmegaLeo.HelperLib.Web/Views/Home/Index.cshtml` *@
+@model Dictionary<string, OmegaLeo.HelperLib.Web.Models.LibraryDocumentationViewModel>
+@{
+    ViewData["Title"] = "OmegaLeo Helper Libraries";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">OmegaLeo Helper Libraries</h1>
+        <p class="lead">Comprehensive C# libraries for game development and general utilities</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var library in Model)
+        {
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@library.Value.LibraryName</h5>
+                        <p class="card-text">@library.Value.Description</p>
+                        <p class="text-muted small">
+                            @library.Value.Documentation.Count classes documented
+                        </p>
+                        <a href="https://www.nuget.org/packages/@library.Value.NuGetPackageId" 
+                           target="_blank" 
+                           class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-box-seam"></i> View on NuGet
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Library" asp-route-id="@library.Key" class="btn btn-primary w-100">
+                            View Documentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

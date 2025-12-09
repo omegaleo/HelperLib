@@ -11,12 +11,9 @@ namespace GameDevLibrary.Helpers
 
         private static Stopwatch GetStopwatch(string key)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            Stopwatch stopwatch;
             
-            if (_stopwatches.TryGetValue(key, out stopwatch))
-            {
-            }
-            else
+            if (!_stopwatches.TryGetValue(key, out stopwatch))
             {
                 stopwatch = new Stopwatch();
                 _stopwatches.Add(key, stopwatch);

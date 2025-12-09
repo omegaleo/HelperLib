@@ -1,0 +1,126 @@
+@* File: `OmegaLeo.HelperLib.Web/Views/Home/Library.cshtml` *@
+@model OmegaLeo.HelperLib.Web.Models.LibraryDocumentationViewModel
+@{
+    ViewData["Title"] = Model.LibraryName;
+    var groupedByNamespace = Model.Documentation.GroupBy(d => d.AssemblyName).OrderBy(g => g.Key);
+}
+
+<div class="container-fluid mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">@Model.LibraryName</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sticky-top" style="top: 20px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>@Model.LibraryName</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a class="list-group-item list-group-item-action" href="#overview">
+                                <i class="bi bi-info-circle me-2"></i>Overview
+                            </a>
+                            @foreach (var ns in groupedByNamespace)
+                            {
+                                <a class="list-group-item list-group-item-action" href="#namespace-@ns.Key.Replace(".", "-")">
+                                    <i class="bi bi-folder me-2"></i>@ns.Key
+                                </a>
+                            }
+                            <a class="list-group-item list-group-item-action" href="#changelog">
+                                <i class="bi bi-clock-history me-2"></i>Changelog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="overview" class="mb-5">
+                <h2>@Model.LibraryName</h2>
+                <p class="lead">@Model.Description</p>
+                <hr />
+            </div>
+
+            @foreach (var ns in groupedByNamespace)
+            {
+                <div id="namespace-@ns.Key.Replace(".", "-")" class="mb-5">
+                    <h3>@ns.Key</h3>
+
+                    @foreach (var classDoc in ns.OrderBy(d => d.ClassName))
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">@classDoc.ClassName</h4>
+                                <small class="text-muted">@classDoc.AssemblyName</small>
+                            </div>
+                            <div class="card-body">
+                                @if (classDoc.Descriptions != null && classDoc.Descriptions.Any())
+                                {
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var desc in classDoc.Descriptions)
+                                                {
+                                                    <tr>
+                                                        <td><code>@desc.Title</code></td>
+                                                        <td>@Html.Raw(desc.Description)</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <p class="text-muted">No documentation available.</p>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ChangelogMarkdown))
+            {
+                <div id="changelog" class="mb-5">
+                    <h3>Changelog</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            @Html.Raw(Markdig.Markdown.ToHtml(Model.ChangelogMarkdown))
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .sticky-top {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
