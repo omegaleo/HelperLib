@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\OmegaLeo.HelperLib.Changelog\OmegaLeo.HelperLib.Changelog.csproj" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Game\OmegaLeo.HelperLib.Game.csproj" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Git\OmegaLeo.HelperLib.Git.csproj" />
       <ProjectReference Include="..\OmegaLeo.HelperLib\OmegaLeo.HelperLib.csproj" />
     </ItemGroup>
 

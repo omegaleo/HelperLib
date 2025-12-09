@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using NetFlow.DocumentationHelper.Library.Attributes;
 using OmegaLeo.HelperLib.Changelog.Attributes;
 
 namespace OmegaLeo.HelperLib.Changelog.Tools
 {
     [Changelog("v1.0.0", "Created the class ChangelogTool to extract changelogs via attributes")]
+    [Documentation("ChangelogTool", "Provides methods to extract changelog information from assembly attributes.")]
     public class ChangelogTool
     {
+        [Documentation("ChangelogTool.ExtractChangelog", "Extracts changelog entries from the specified assembly.")]
         public static Dictionary<string, List<Models.Changelog>> ExtractChangelog(Assembly assembly)
         {
             var changelogByVersion = new Dictionary<string, List<Models.Changelog>>();
@@ -32,6 +35,7 @@ namespace OmegaLeo.HelperLib.Changelog.Tools
             return changelogByVersion;
         }
 
+        [Documentation("ChangelogTool.GetMarkdown", "Generates a markdown formatted changelog from the assembly's changelog attributes.")]
         public static string GetMarkdown(Assembly assembly)
         {
             var changelog = ExtractChangelog(assembly);
