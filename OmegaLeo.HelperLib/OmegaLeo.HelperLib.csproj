@@ -10,6 +10,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
+        <PackageLicenseUrl>https://github.com/omegaleo/HelperLib/blob/main/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <ItemGroup>
