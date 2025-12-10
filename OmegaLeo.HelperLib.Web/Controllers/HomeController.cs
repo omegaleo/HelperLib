@@ -115,16 +115,6 @@ public class HomeController : Controller
 
     static string GetSolutionRoot()
     {
-        string dir = AppContext.BaseDirectory;
-
-        while (!string.IsNullOrEmpty(dir))
-        {
-            if (Directory.GetFiles(dir, "*.sln").Length > 0)
-                return dir;
-
-            dir = Directory.GetParent(dir)?.FullName;
-        }
-
-        throw new Exception("Solution root not found.");
+        return Assembly.GetEntryAssembly().Location;
     }
 }
