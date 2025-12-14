@@ -266,8 +266,11 @@ public class HomeController : Controller
         IEnumerable<DocumentationStructure> allDocumentation = Enumerable.Empty<DocumentationStructure>();
         try
         {
+            // Pass the specific assembly to only scan that assembly
             var result = DocumentationHelperTool.GenerateDocumentation();
-            allDocumentation = result?.ToList() ?? Enumerable.Empty<DocumentationStructure>();
+            allDocumentation = result?
+                .Where(d => d.AssemblyName?.Equals(assembly.GetName().Name ,StringComparison.OrdinalIgnoreCase) == true)
+                .ToList() ?? Enumerable.Empty<DocumentationStructure>();
 
             _logger.LogInformation("GenerateDocumentation returned {Count} items for {Assembly}",
                 allDocumentation.Count(), assembly.GetName().Name);
@@ -293,7 +296,8 @@ public class HomeController : Controller
             throw;
         }
 
-        Dictionary<string, List<Changelog.Models.Changelog>> changelog = new Dictionary<string, List<Changelog.Models.Changelog>>();
+        Dictionary<string, List<Changelog.Models.Changelog>> changelog =
+            new Dictionary<string, List<Changelog.Models.Changelog>>();
         var changelogMarkdown = string.Empty;
         if (System.IO.File.Exists(changelogPath))
         {
@@ -322,8 +326,9 @@ public class HomeController : Controller
             Documentation = allDocumentation.ToList()
         };
 
-        _logger.LogInformation("=== Completed GenerateLibraryDocs for {Assembly}. Total namespaces: {Count} ===",
-            assembly.GetName().Name, viewModel.Documentation.Select(d => d.AssemblyName).Distinct().Count());
+        _logger.LogInformation(
+            "=== Completed GenerateLibraryDocs for {Assembly}. Total documentation items: {Count} ===",
+            assembly.GetName().Name, viewModel.Documentation.Count);
 
         return viewModel;
     }
