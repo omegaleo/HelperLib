@@ -319,6 +319,6 @@ public class HomeController : Controller
 
     static string GetSolutionRoot()
     {
-        return Assembly.GetEntryAssembly().Location;
+        return AppContext.BaseDirectory;
     }
 }
