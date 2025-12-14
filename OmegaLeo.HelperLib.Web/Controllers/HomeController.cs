@@ -78,38 +78,46 @@ public class HomeController : Controller
 
     private LibraryDocumentationViewModel GenerateLibraryDocs(Assembly assembly, string changelogPath, string displayName, string description, string nugetPackageId)
     {
-        var allDocumentation = DocumentationHelperTool.GenerateDocumentation();
-        var assemblyName = assembly.GetName().Name;
-
-        var filteredDocumentation = allDocumentation
-            .Where(d => d.AssemblyName.Equals(assemblyName, StringComparison.OrdinalIgnoreCase))
-            .OrderBy(d => d.ClassName)
-            .ToList();
-
-        string changelogMarkdown = "";
-        if (System.IO.File.Exists(changelogPath))
+        try
         {
-            changelogMarkdown = ChangelogTool.GetMarkdown(assembly);
+            var allDocumentation = DocumentationHelperTool.GenerateDocumentation();
+            var assemblyName = assembly.GetName().Name;
+
+            var filteredDocumentation = allDocumentation
+                .Where(d => d.AssemblyName.Equals(assemblyName, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(d => d.ClassName)
+                .ToList();
+
+            string changelogMarkdown = "";
+            if (System.IO.File.Exists(changelogPath))
+            {
+                changelogMarkdown = ChangelogTool.GetMarkdown(assembly);
+            }
+
+            string version = assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion
+                             ?? assembly.GetName().Version?.ToString()
+                             ?? "1.0.0";
+
+            if (version.Contains('+'))
+            {
+                version = version.Substring(0, version.IndexOf('+'));
+            }
+
+            return new LibraryDocumentationViewModel
+            {
+                LibraryName = displayName,
+                Description = description,
+                Version = version,
+                NuGetPackageId = nugetPackageId,
+                Documentation = filteredDocumentation,
+                ChangelogMarkdown = changelogMarkdown
+            };
         }
-
-        string version = assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion
-                         ?? assembly.GetName().Version?.ToString()
-                         ?? "1.0.0";
-
-        if (version.Contains('+'))
+        catch (Exception e)
         {
-            version = version.Substring(0, version.IndexOf('+'));
+            Console.WriteLine($"Failed to Generate Library Docs for {assembly.FullName}: {e.Message}");
+            return new LibraryDocumentationViewModel();
         }
-
-        return new LibraryDocumentationViewModel
-        {
-            LibraryName = displayName,
-            Description = description,
-            Version = version,
-            NuGetPackageId = nugetPackageId,
-            Documentation = filteredDocumentation,
-            ChangelogMarkdown = changelogMarkdown
-        };
     }
 
 
