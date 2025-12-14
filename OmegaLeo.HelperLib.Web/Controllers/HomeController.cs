@@ -68,7 +68,18 @@ public class HomeController : Controller
         if (string.IsNullOrEmpty(id) || !_libraryCache.ContainsKey(id))
             return NotFound();
 
-        return View(_libraryCache[id]);
+        var cache = _libraryCache[id];
+
+        if (cache.Documentation.Any())
+        {
+            _logger.LogInformation($"Found cache for {id}: {cache.Documentation.Count} entries");
+        }
+        else
+        {
+            _logger.LogError($"Cache for {id} is empty!");
+        }
+
+        return View(cache);
     }
 
     public IActionResult Privacy()
