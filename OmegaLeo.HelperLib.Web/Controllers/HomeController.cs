@@ -54,7 +54,7 @@ public class HomeController : Controller
                 "OmegaLeo.HelperLib.Game"
             )
         };
-    
+
         _logger.LogInformation("Initialized {Count} libraries", _libraryCache.Count);
     }
 
@@ -229,22 +229,55 @@ public class HomeController : Controller
     private LibraryDocumentationViewModel GenerateLibraryDocs(Assembly assembly, string changelogPath,
         string displayName, string description, string nugetPackageId)
     {
-        _logger.LogInformation("Generating documentation for {Assembly}", assembly.GetName().Name);
+        _logger.LogInformation("=== Starting GenerateLibraryDocs for {Assembly} ===", assembly.GetName().Name);
         _logger.LogInformation("Assembly location: {Location}", assembly.Location ?? "<in-memory>");
         _logger.LogInformation("Changelog path: {Path}", changelogPath);
         _logger.LogInformation("Changelog exists: {Exists}", System.IO.File.Exists(changelogPath));
-    
+
+        // Log types in assembly and their attributes
+        try
+        {
+            var types = assembly.GetTypes();
+            _logger.LogInformation("Assembly {Name} contains {Count} types", assembly.GetName().Name, types.Length);
+
+            var typesWithDocAttr = types.Where(t =>
+                    t.GetCustomAttributes().Any(a =>
+                        a.GetType().Name.Contains("Documentation", StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+
+            _logger.LogInformation("Found {Count} types with DocumentationAttribute-like attributes",
+                typesWithDocAttr.Count);
+
+            if (typesWithDocAttr.Any())
+            {
+                foreach (var type in typesWithDocAttr.Take(5))
+                {
+                    _logger.LogInformation("  Type with doc attr: {TypeName}", type.FullName);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to inspect assembly types");
+        }
+
         LogDocumentationHelperInfo();
 
         IEnumerable<DocumentationStructure> allDocumentation = Enumerable.Empty<DocumentationStructure>();
         try
         {
-            // Pass the specific assembly to GenerateDocumentation
             var result = DocumentationHelperTool.GenerateDocumentation();
             allDocumentation = result?.ToList() ?? Enumerable.Empty<DocumentationStructure>();
-        
-            _logger.LogInformation("GenerateDocumentation returned {Count} items for {Assembly}", 
+
+            _logger.LogInformation("GenerateDocumentation returned {Count} items for {Assembly}",
                 allDocumentation.Count(), assembly.GetName().Name);
+
+            if (!allDocumentation.Any())
+            {
+                _logger.LogWarning(
+                    "No documentation items generated for {Assembly}. Check if types have [Documentation] attribute applied.",
+                    assembly.GetName().Name);
+            }
         }
         catch (MissingMethodException mmex)
         {
@@ -260,67 +293,39 @@ public class HomeController : Controller
             throw;
         }
 
-        try
+        Dictionary<string, List<Changelog.Models.Changelog>> changelog = new Dictionary<string, List<Changelog.Models.Changelog>>();
+        var changelogMarkdown = string.Empty;
+        if (System.IO.File.Exists(changelogPath))
         {
-            var assemblyName = assembly.GetName().Name;
-
-            List<DocumentationStructure> filteredDocumentation = allDocumentation
-                .Where<DocumentationStructure>(d =>
-                {
-                    try
-                    {
-                        var prop = d.GetType().GetProperty("AssemblyName");
-                        return prop != null && string.Equals(prop.GetValue(d)?.ToString(), assemblyName,
-                            StringComparison.OrdinalIgnoreCase);
-                    }
-                    catch
-                    {
-                        return false;
-                    }
-                })
-                .OrderBy<DocumentationStructure, string>(d =>
-                {
-                    try
-                    {
-                        return d.GetType().GetProperty("ClassName")?.GetValue(d)?.ToString() ?? "";
-                    }
-                    catch
-                    {
-                        return "";
-                    }
-                }).ToList<DocumentationStructure>();
-
-            string changelogMarkdown = "";
-            if (System.IO.File.Exists(changelogPath))
+            try
             {
+                changelog = ChangelogTool.ExtractChangelog(assembly);
                 changelogMarkdown = ChangelogTool.GetMarkdown(assembly);
+                _logger.LogInformation("Parsed changelog with {Count} versions", changelog.Count);
             }
-
-            string version = assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()
-                                 ?.InformationalVersion
-                             ?? assembly.GetName().Version?.ToString()
-                             ?? "1.0.0";
-
-            if (version.Contains('+'))
+            catch (Exception ex)
             {
-                version = version.Substring(0, version.IndexOf('+'));
+                _logger.LogError(ex, "Failed to parse changelog at {Path}", changelogPath);
             }
-
-            return new LibraryDocumentationViewModel
-            {
-                LibraryName = displayName,
-                Description = description,
-                Version = version,
-                NuGetPackageId = nugetPackageId,
-                Documentation = filteredDocumentation,
-                ChangelogMarkdown = changelogMarkdown
-            };
         }
-        catch (Exception e)
+        else
         {
-            _logger.LogError(e, "Failed to process documentation for {Assembly}", assembly.FullName);
-            return new LibraryDocumentationViewModel();
+            _logger.LogWarning("Changelog file not found at {Path}", changelogPath);
         }
+
+        var viewModel = new LibraryDocumentationViewModel
+        {
+            LibraryName = displayName,
+            Description = description,
+            NuGetPackageId = nugetPackageId,
+            ChangelogMarkdown = changelogMarkdown,
+            Documentation = allDocumentation.ToList()
+        };
+
+        _logger.LogInformation("=== Completed GenerateLibraryDocs for {Assembly}. Total namespaces: {Count} ===",
+            assembly.GetName().Name, viewModel.Documentation.Select(d => d.AssemblyName).Distinct().Count());
+
+        return viewModel;
     }
 
 
