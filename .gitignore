@@ -3,3 +3,12 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/.vs
+<<<<<<< Updated upstream
+/OmegaLeo.HelperLib.Web
+=======
+/OmegaLeo.HelperLib.Web/.config
+/OmegaLeo.HelperLib.Web/Properties/PublishProfiles
+/OmegaLeo.HelperLib.Web/publish
+>>>>>>> Stashed changes
+/OmegaLeo.HelperLib.Web/OmegaLeo.HelperLib.Web.csproj.user
