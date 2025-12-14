@@ -1,14 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using NetFlow.DocumentationHelper.Library.Attributes;
 
 namespace GameDevLibrary.Helpers
 {
+    [Documentation(nameof(BenchmarkUtility), "Utility class for benchmarking code execution time.", null, @"```csharp
+BenchmarkUtility.Start(""MyBenchmark"");
+// Code to benchmark
+BenchmarkUtility.Stop(""MyBenchmark"");
+var results = BenchmarkUtility.GetResults(""MyBenchmark"");
+```")]
     public class BenchmarkUtility
     {
         private static Dictionary<string, List<long>> _benchmarks = new Dictionary<string, List<long>>();
         private static Dictionary<string, Stopwatch> _stopwatches = new Dictionary<string, Stopwatch>();
 
+        [Documentation("GetStopwatch", "Retrieves or creates a Stopwatch instance for the given key.", null, null)]
         private static Stopwatch GetStopwatch(string key)
         {
             Stopwatch stopwatch;
@@ -22,6 +30,14 @@ namespace GameDevLibrary.Helpers
             return stopwatch;
         }
 
+        [Documentation("Record", "Records the execution time of the provided action and returns the elapsed time in milliseconds.", null, @"```csharp
+var time = BenchmarkUtility.Record(() =>
+{
+    // Code to benchmark
+});
+
+Console.WriteLine($""Elapsed time: {time} ms"");
+```")]
         public static long Record(Action actionToRecord)
         {
             var stopwatch = new Stopwatch();
@@ -33,6 +49,19 @@ namespace GameDevLibrary.Helpers
             return stopwatch.ElapsedMilliseconds;
         }
         
+        [Documentation("RecordAndSaveToResults", "Records the execution time of the provided action, saves it under the given key, and returns the elapsed time in milliseconds.", null, @"```csharp
+var time = BenchmarkUtility.RecordAndSaveToResults(""MyBenchmark"", () =>
+{
+    // Code to benchmark
+});
+
+Console.WriteLine($""Elapsed time: {time} ms"");
+
+var results = BenchmarkUtility.GetResults(""MyBenchmark"");
+
+var averageTime = results.Average();
+Console.WriteLine($""Average time: {averageTime} ms"");
+```")]
         public static long RecordAndSaveToResults(string key, Action actionToRecord)
         {
             var stopwatch = new Stopwatch();
@@ -52,11 +81,13 @@ namespace GameDevLibrary.Helpers
             return stopwatch.ElapsedMilliseconds;
         }
         
+        [Documentation("Start", "Starts or restarts the stopwatch for the given key.", null, null)]
         public static void Start(string key)
         {
             GetStopwatch(key).Restart();
         }
 
+        [Documentation("Stop", "Stops the stopwatch for the given key and records the elapsed time.", null, null)]
         public static void Stop(string key)
         {
             if (!_benchmarks.ContainsKey(key))
@@ -68,16 +99,19 @@ namespace GameDevLibrary.Helpers
             _benchmarks[key].Add(GetStopwatch(key).ElapsedMilliseconds);
         }
 
+        [Documentation("GetResults", "Retrieves the list of recorded times for the given key.", null, null)]
         public static List<long> GetResults(string key)
         {
             return _benchmarks.ContainsKey(key) ? _benchmarks[key] : new List<long>();
         }
 
+        [Documentation("ClearResults", "Clears all recorded benchmark results.", null, null)]
         public static void ClearResults()
         {
             _benchmarks.Clear();
         }
 
+        [Documentation("GetAllResults", "Retrieves all recorded benchmark results.", null, null)]
         public static Dictionary<string, List<long>> GetAllResults()
         {
             return new Dictionary<string, List<long>>(_benchmarks);

@@ -34,6 +34,14 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Library" asp-route-id="game">Game Dev</a>
                         </li>
                     </ul>
+                    
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/omegaleo/HelperLib" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+                                <i class="bi bi-github" style="font-size:1.25rem;"></i> View on Github
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -41,12 +49,6 @@
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - OmegaLeo Helper Libraries
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
