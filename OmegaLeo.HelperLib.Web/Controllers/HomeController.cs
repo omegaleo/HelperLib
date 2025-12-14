@@ -28,31 +28,34 @@ public class HomeController : Controller
         if (_libraryCache != null) return;
 
         var root = GetSolutionRoot();
+        _logger.LogInformation("Initializing libraries from base directory: {Root}", root);
 
         _libraryCache = new Dictionary<string, LibraryDocumentationViewModel>
         {
             ["core"] = GenerateLibraryDocs(
                 typeof(BenchmarkUtility).Assembly,
-                Path.Join(root, "OmegaLeo.HelperLib", "CHANGELOG.md"),
+                Path.Combine(root, "changelogs", "OmegaLeo.HelperLib.CHANGELOG.md"),
                 "Core Library",
                 "Core utilities and helper functions for general C# development",
                 "OmegaLeo.HelperLib"
             ),
             ["changelog"] = GenerateLibraryDocs(
                 typeof(Changelog.Models.Changelog).Assembly,
-                Path.Join(root, "OmegaLeo.HelperLib.Changelog", "CHANGELOG.md"),
+                Path.Combine(root, "changelogs", "OmegaLeo.HelperLib.Changelog.CHANGELOG.md"),
                 "Changelog Library",
                 "Tools for managing and generating changelogs",
                 "OmegaLeo.HelperLib.Changelog"
             ),
             ["game"] = GenerateLibraryDocs(
                 typeof(OmegaLeo.HelperLib.Game.Models.ConsoleCommand).Assembly,
-                Path.Join(root, "OmegaLeo.HelperLib.Game", "CHANGELOG.md"),
+                Path.Combine(root, "changelogs", "OmegaLeo.HelperLib.Game.CHANGELOG.md"),
                 "Game Development Library",
                 "Game development utilities for Unity and Godot",
                 "OmegaLeo.HelperLib.Game"
             )
         };
+    
+        _logger.LogInformation("Initialized {Count} libraries", _libraryCache.Count);
     }
 
     public IActionResult Index()
@@ -226,24 +229,28 @@ public class HomeController : Controller
     private LibraryDocumentationViewModel GenerateLibraryDocs(Assembly assembly, string changelogPath,
         string displayName, string description, string nugetPackageId)
     {
-        // diagnostics before calling into the library
+        _logger.LogInformation("Generating documentation for {Assembly}", assembly.GetName().Name);
+        _logger.LogInformation("Assembly location: {Location}", assembly.Location ?? "<in-memory>");
+        _logger.LogInformation("Changelog path: {Path}", changelogPath);
+        _logger.LogInformation("Changelog exists: {Exists}", System.IO.File.Exists(changelogPath));
+    
         LogDocumentationHelperInfo();
 
         IEnumerable<DocumentationStructure> allDocumentation = Enumerable.Empty<DocumentationStructure>();
         try
         {
-            // Call inside try so we can capture MethodNotFound and log diagnostics
+            // Pass the specific assembly to GenerateDocumentation
             var result = DocumentationHelperTool.GenerateDocumentation();
-            // prefer safe cast / defensive assignment
-            allDocumentation = (result as IEnumerable<DocumentationStructure>) ??
-                               (result is IEnumerable<DocumentationStructure> e ? e : Enumerable.Empty<DocumentationStructure>());
+            allDocumentation = result?.ToList() ?? Enumerable.Empty<DocumentationStructure>();
+        
+            _logger.LogInformation("GenerateDocumentation returned {Count} items for {Assembly}", 
+                allDocumentation.Count(), assembly.GetName().Name);
         }
         catch (MissingMethodException mmex)
         {
             _logger.LogError(mmex,
                 "Missing method when calling DocumentationHelperTool.GenerateDocumentation(). Possible assembly mismatch.");
             InspectDocumentationHelperMethod();
-            // rethrow so debugger still sees the original error
             ExceptionDispatchInfo.Capture(mmex).Throw();
         }
         catch (Exception ex)
