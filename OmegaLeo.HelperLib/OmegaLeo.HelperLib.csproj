@@ -14,10 +14,6 @@
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
         <RepositoryType>git</RepositoryType>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <PackageLicenseExpression>AGPL-3.0</PackageLicenseExpression>
-        <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
-        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
