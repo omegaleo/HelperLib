@@ -14,6 +14,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Web", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Game", "OmegaLeo.HelperLib.Game\OmegaLeo.HelperLib.Game.csproj", "{488BC3EA-9B7A-4251-B802-22EB098D6494}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{00CF0543-37F3-41DE-B78F-8ADA6DE796ED}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
