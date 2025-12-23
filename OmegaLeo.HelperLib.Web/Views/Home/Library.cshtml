@@ -1,8 +1,16 @@
 @* File: `OmegaLeo.HelperLib.Web/Views/Home/Library.cshtml` *@
+@using ColorCode.Styling
+@using GameDevLibrary.Extensions
+@using Markdig
 @model OmegaLeo.HelperLib.Web.Models.LibraryDocumentationViewModel
 @{
     ViewData["Title"] = Model.LibraryName;
     var groupedByNamespace = Model.Documentation.GroupBy(d => d.AssemblyName).OrderBy(g => g.Key);
+    
+    var pipeline = new MarkdownPipelineBuilder()
+        .UseAdvancedExtensions()
+        .UseSyntaxHighlighting(StyleDictionary.DefaultDark)
+        .Build();
 }
 
 <div class="container-fluid mt-4">
@@ -75,7 +83,14 @@
                                                 {
                                                     <tr>
                                                         <td><code>@desc.Title</code></td>
-                                                        <td>@Html.Raw(desc.Description)</td>
+                                                        <td>@Html.Raw(desc.Description)<br/>
+                                                            @if (desc.CodeExample.IsNotNullOrEmpty())
+                                                            {
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    @Html.Raw(Markdig.Markdown.ToHtml(desc.CodeExample, pipeline))
+                                                                </div>
+                                                            }</td>
                                                     </tr>
                                                 }
                                             </tbody>

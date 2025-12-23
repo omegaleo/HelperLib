@@ -20,3 +20,21 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+pre {
+  overflow: auto;
+  padding: 1rem;
+  background-color: #495057;
+  position: relative;
+
+  color: #f2f2f2;
+}
+
+code {
+  background-color: transparent !important;
+}
+
+.example-code > div {
+  border-radius: 0.5rem !important;
+  background-color: #495057 !important;
+}
