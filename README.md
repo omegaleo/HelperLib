@@ -44,7 +44,7 @@ This documentation is automatically generated from the code using the [NetFlow.D
 Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
-This project is licensed under the AGPL v3 License. See the [LICENSE](LICENSE) file for details
+This project is licensed under the AGPL v3 License. See the [LICENSE](LICENSE) file for details.
 
 ## Socials
 [![Youtube](https://img.shields.io/youtube/channel/subscribers/UCsdYKC7EK4Z_cpgWt0YiO9Q?style=plastic&label=Youtube&color=red
