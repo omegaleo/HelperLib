@@ -274,7 +274,7 @@ public class HomeController : Controller
 
         LogDocumentationHelperInfo();
 
-        IEnumerable<DocumentationStructure> allDocumentation;
+        IEnumerable<DocumentationStructure> allDocumentation = Enumerable.Empty<DocumentationStructure>();
         try
         {
             // Pass the specific assembly to only scan that assembly
