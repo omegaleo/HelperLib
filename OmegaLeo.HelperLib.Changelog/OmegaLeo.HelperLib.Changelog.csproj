@@ -10,6 +10,10 @@
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <PackageLicenseExpression>AGPL-3.0</PackageLicenseExpression>
+        <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
