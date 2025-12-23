@@ -307,16 +307,14 @@ public class HomeController : Controller
             throw;
         }
 
-        Dictionary<string, List<Changelog.Models.Changelog>> changelog =
-            new Dictionary<string, List<Changelog.Models.Changelog>>();
         var changelogMarkdown = string.Empty;
         if (System.IO.File.Exists(changelogPath))
         {
             try
             {
-                changelog = ChangelogTool.ExtractChangelog(assembly);
+                ChangelogTool.ExtractChangelog(assembly);
                 changelogMarkdown = ChangelogTool.GetMarkdown(assembly);
-                _logger.LogInformation("Parsed changelog with {Count} versions", changelog.Count);
+                _logger.LogInformation("Parsed changelog for {Assembly}", assembly.GetName().Name);
             }
             catch (Exception ex)
             {
