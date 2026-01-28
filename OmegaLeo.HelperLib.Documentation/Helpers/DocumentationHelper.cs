@@ -11,7 +11,7 @@ using OmegaLeo.HelperLib.Documentation.Models;
 namespace OmegaLeo.HelperLib.Documentation.Helpers
 {
 
-    [Changelog("1.2.0", "Migrated DocumentationHelper library from NetFlow.DocumentationHelper.Library to it's own package in OmegaLeo.HelperLib")]
+    [Changelog("1.2.0", "Migrated DocumentationHelper library from NetFlow.DocumentationHelper.Library to it's own package in OmegaLeo.HelperLib", "January 26, 2026")]
     public static class DocumentationHelperTool
     {
         [Documentation("GenerateDocumentation (bool generateForPackageAssembly)",

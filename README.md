@@ -1,4 +1,4 @@
-# HelperLib
+# Omega Leo's Helper Library
 
 Lightweight utility library for C\# projects and game development helpers.
 

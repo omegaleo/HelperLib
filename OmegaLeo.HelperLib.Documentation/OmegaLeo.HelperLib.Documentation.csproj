@@ -25,5 +25,13 @@
     <ItemGroup>
       <ProjectReference Include="..\OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <None Update="README.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="CHANGELOG.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 
 </Project>

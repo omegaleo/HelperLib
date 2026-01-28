@@ -1,1 +1,1 @@
-# Omega Leo's Helper Lib
+# Omega Leo's Helper Library
