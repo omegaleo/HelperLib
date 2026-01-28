@@ -29,6 +29,12 @@ jobs:
       - name: Update OmegaLeo.HelperLib.Changelog Version
         run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Changelog/OmegaLeo.HelperLib.Changelog.csproj"
 
+      - name: Update OmegaLeo.HelperLib.Documentation Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Documentation/OmegaLeo.HelperLib.Documentation.csproj"
+
+      - name: Update OmegaLeo.HelperLib.Game Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Game/OmegaLeo.HelperLib.Game.csproj"
+
       - name: Build Solution
         run: dotnet build --configuration Release
 
