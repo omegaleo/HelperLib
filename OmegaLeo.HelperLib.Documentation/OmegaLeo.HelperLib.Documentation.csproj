@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>OmegaLeo.HelperLib.Documentation</RootNamespace>
-        <Version>0.0.2</Version>
+        <Version>1.2.0</Version>
         <Title>Omega Leo's Helper Library</Title>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
         <PackageReadmeFile>README.md</PackageReadmeFile>
