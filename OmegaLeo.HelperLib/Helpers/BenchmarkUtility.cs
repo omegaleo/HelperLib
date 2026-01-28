@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 
-namespace GameDevLibrary.Helpers
+namespace OmegaLeo.HelperLib.Helpers
 {
     [Documentation(nameof(BenchmarkUtility), "Utility class for benchmarking code execution time.", null, @"```csharp
 BenchmarkUtility.Start(""MyBenchmark"");
@@ -11,6 +11,7 @@ BenchmarkUtility.Start(""MyBenchmark"");
 BenchmarkUtility.Stop(""MyBenchmark"");
 var results = BenchmarkUtility.GetResults(""MyBenchmark"");
 ```")]
+    [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Helpers.", "January 28, 2026")]
     public class BenchmarkUtility
     {
         private static Dictionary<string, List<long>> _benchmarks = new Dictionary<string, List<long>>();

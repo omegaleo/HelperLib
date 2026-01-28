@@ -1,4 +1,4 @@
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 using OmegaLeo.HelperLib.Game.Models;
 
 namespace OmegaLeo.HelperLib.Game.Handlers

@@ -23,17 +23,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="NetFlow.DocumentationHelper.Library">
-        <HintPath>..\..\..\..\..\..\home\omegaleo\.nuget\packages\netflow.documentationhelper.library\1.1.2\lib\netstandard2.1\NetFlow.DocumentationHelper.Library.dll</HintPath>
+      <Reference Include="OmegaLeo.HelperLib.Documentation">
+        <HintPath>..\..\..\..\..\..\home\omegaleo\.nuget\packages\OmegaLeo.HelperLib.Documentation\1.1.2\lib\netstandard2.1\OmegaLeo.HelperLib.Documentation.dll</HintPath>
       </Reference>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.2" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Documentation\OmegaLeo.HelperLib.Documentation.csproj" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj" />
     </ItemGroup>
 
 </Project>

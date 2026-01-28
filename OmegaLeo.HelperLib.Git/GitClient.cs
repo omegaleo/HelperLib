@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using GameDevLibrary.Extensions;
+using OmegaLeo.HelperLib.Extensions;
 using LibGit2Sharp;
 using OmegaLeo.HelperLib.Git.Models;
 

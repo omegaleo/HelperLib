@@ -29,6 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{750F
 		.github\workflows\nuget-publish.yml = .github\workflows\nuget-publish.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Documentation", "OmegaLeo.HelperLib.Documentation\OmegaLeo.HelperLib.Documentation.csproj", "{AE69480D-5956-46CB-9028-E4723735E37E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Shared", "OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj", "{FE6CA992-8BEB-41DD-A8E4-60FCEF96C59A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{488BC3EA-9B7A-4251-B802-22EB098D6494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{488BC3EA-9B7A-4251-B802-22EB098D6494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{488BC3EA-9B7A-4251-B802-22EB098D6494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE69480D-5956-46CB-9028-E4723735E37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE69480D-5956-46CB-9028-E4723735E37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE69480D-5956-46CB-9028-E4723735E37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE69480D-5956-46CB-9028-E4723735E37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6CA992-8BEB-41DD-A8E4-60FCEF96C59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6CA992-8BEB-41DD-A8E4-60FCEF96C59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6CA992-8BEB-41DD-A8E4-60FCEF96C59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6CA992-8BEB-41DD-A8E4-60FCEF96C59A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{750F2E9A-2703-4732-98D7-29C658368E48} = {00CF0543-37F3-41DE-B78F-8ADA6DE796ED}

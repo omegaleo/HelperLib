@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 
-namespace GameDevLibrary.Models
+namespace OmegaLeo.HelperLib.Models
 {
     // Inspiration: https://www.youtube.com/watch?v=x-ejym1WdjE
     [Serializable]
     [Documentation("NeoDictionary", "Dictionary like class created to make it easier to display dictionaries in game engines like Unity")]
+    [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Models.", "January 28, 2026")]
     public class NeoDictionary<TKey,TValue>
     {
         public List<NeoDictionaryItem<TKey, TValue>> Items = new List<NeoDictionaryItem<TKey, TValue>>();

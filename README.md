@@ -38,7 +38,7 @@ dotnet add package OmegaLeo.HelperLib.Changelog
   
 ## Documentation
 The documentation for this project can be found at [https://library.omegaleo.dev](https://library.omegaleo.dev).
-This documentation is automatically generated from the code using the [NetFlow.DocumentationHelper.Library](https://github.com/omegaleo/Netflow.DocumentationHelper).
+This documentation is automatically generated from the code using the [OmegaLeo.HelperLib.Documentation](https://github.com/omegaleo/Netflow.DocumentationHelper).
 
 ## Contributing
 Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.

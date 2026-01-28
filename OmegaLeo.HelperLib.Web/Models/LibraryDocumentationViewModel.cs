@@ -1,5 +1,5 @@
 // File: `OmegaLeo.HelperLib.Web/Models/LibraryDocumentationViewModel.cs`
-using NetFlow.DocumentationHelper.Library.Models;
+using OmegaLeo.HelperLib.Documentation.Models;
 
 namespace OmegaLeo.HelperLib.Web.Models
 {
