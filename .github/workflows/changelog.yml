@@ -47,5 +47,5 @@ jobs:
 
       - name: Create and Push Tag
         run: |
-          git tag -a "v${{ github.event.inputs.tagName }}" -m "Release v${{ github.event.inputs.tagName }}"
+          git tag -a "${{ github.event.inputs.tagName }}" -m "Release ${{ github.event.inputs.tagName }}"
           git push origin "v${{ github.event.inputs.tagName }}"
