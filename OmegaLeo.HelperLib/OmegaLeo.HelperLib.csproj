@@ -19,10 +19,10 @@
 
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
         <None Include="CHANGELOG.md" Pack="true" PackagePath="\">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
         <None Include="LICENSE.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
