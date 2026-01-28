@@ -1,5 +1,6 @@
 # Changelog  
 ## Version 1.2.0
+### January 26, 2026
 
 **OmegaLeo.HelperLib.Documentation.Helpers**
 - **DocumentationHelperTool**:

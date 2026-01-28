@@ -62,6 +62,13 @@ public class HomeController : Controller
                 "OmegaLeo.HelperLib.Documentation",
                 true
             ),
+            ["shared"] = GenerateLibraryDocs(
+                typeof(OmegaLeo.HelperLib.Shared.Attributes.ChangelogAttribute).Assembly,
+                Path.Combine(root, "shared", "OmegaLeo.HelperLib.Shared.CHANGELOG.md"),
+                "Shared Library",
+                "Library of shared attributes and utilities used across other OmegaLeo.HelperLib packages",
+                "OmegaLeo.HelperLib.Shared"
+            ),
         };
 
         _logger.LogInformation("Initialized {Count} libraries", _libraryCache.Count);

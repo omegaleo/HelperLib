@@ -35,6 +35,9 @@ jobs:
       - name: Update OmegaLeo.HelperLib.Game Version
         run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Game/OmegaLeo.HelperLib.Game.csproj"
 
+      - name: Update OmegaLeo.HelperLib.Shared Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Shared/OmegaLeo.HelperLib.Shared.csproj"
+
       - name: Build Solution
         run: dotnet build --configuration Release
 
