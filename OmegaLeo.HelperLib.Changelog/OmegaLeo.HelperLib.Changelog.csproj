@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Version>1.2.1</Version>
         <Title>Omega Leo's Helper Library - Changelog</Title>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
         <Description>Package to help with Changelog generation</Description>
