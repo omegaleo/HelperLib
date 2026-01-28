@@ -1,0 +1,77 @@
+name: Publish to GitHub Packages
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Version tag (e.g., 1.0.0)'
+        required: true
+        type: string
+run-name: "Publish version v${{ inputs.tag_name }} to GitHub Packages"
+permissions:
+  contents: read
+  packages: write
+jobs:
+  publish-helper-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib/OmegaLeo.HelperLib.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib/bin/Release/OmegaLeo.HelperLib.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate
+
+  publish-changelog-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib.Changelog/OmegaLeo.HelperLib.Changelog.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib.Changelog/bin/Release/OmegaLeo.HelperLib.Changelog.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate
+
+  publish-game-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib.Game/OmegaLeo.HelperLib.Game.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib.Game/bin/Release/OmegaLeo.HelperLib.Game.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate
+
+  publish-doc-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib.Documentation/OmegaLeo.HelperLib.Documentation.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib.Documentation/bin/Release/OmegaLeo.HelperLib.Documentation.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate
+
+  publish-shared-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib.Shared/OmegaLeo.HelperLib.Shared.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib.Shared/bin/Release/OmegaLeo.HelperLib.Shared.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate

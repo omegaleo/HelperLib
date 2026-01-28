@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{750F
 		.github\workflows\changelog.yml = .github\workflows\changelog.yml
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\nuget-publish.yml = .github\workflows\nuget-publish.yml
+		.github\workflows\github-publish.yml = .github\workflows\github-publish.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Documentation", "OmegaLeo.HelperLib.Documentation\OmegaLeo.HelperLib.Documentation.csproj", "{AE69480D-5956-46CB-9028-E4723735E37E}"
