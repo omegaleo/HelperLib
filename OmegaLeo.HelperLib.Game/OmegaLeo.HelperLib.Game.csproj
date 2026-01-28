@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
         <Title>Omega Leo's Helper Library	 - Game Logic</Title>
-        <Version>1.2.1</Version>
+        <Version>1.2.1.1</Version>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
