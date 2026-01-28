@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using OmegaLeo.HelperLib.Changelog.Helpers;
 using OmegaLeo.HelperLib.Helpers;
 using OmegaLeo.HelperLib.Changelog.Models;
 using OmegaLeo.HelperLib.Changelog.Tools;
@@ -26,7 +27,8 @@ foreach (var changelog in changelogs)
 
 void GenerateChangelog(string path, Assembly libraryAssembly)
 {
-    var changelogMarkdown = ChangelogTool.GetMarkdown(libraryAssembly);
+    var changelogMarkdown = $@"# Changelog  
+{ChangelogHelper.GetChangelogMarkdown(new []{libraryAssembly})}";
     
     File.WriteAllText(path,changelogMarkdown);
 }
