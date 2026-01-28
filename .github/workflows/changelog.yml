@@ -6,7 +6,7 @@ on:
         description: 'Tag name:'
         type: string
         required: true
-run-name: "Generating changelog for Release v${{github.event.inputs.tagName}}"
+run-name: "Generating changelog and Creating Tag for Release v${{github.event.inputs.tagName}}"
 jobs:
   generate_changelog:
     runs-on: ubuntu-latest
@@ -54,4 +54,4 @@ jobs:
       - name: Create and Push Tag
         run: |
           git tag -a "${{ github.event.inputs.tagName }}" -m "Release ${{ github.event.inputs.tagName }}"
-          git push origin "v${{ github.event.inputs.tagName }}"
+          git push origin "${{ github.event.inputs.tagName }}"
