@@ -5,19 +5,23 @@
         <Nullable>enable</Nullable>
         <RootNamespace>OmegaLeo.HelperLib.Documentation</RootNamespace>
         <Version>1.2.1.1</Version>
-        <Title>Omega Leo's Helper Library</Title>
+        <Title>Omega Leo's Helper Library - Documentation</Title>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
+        <Description>Documentation attribute and helper tools. Automatically generates XML documentation from DocumentationAttribute for IntelliSense.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
-        <PackageTags>csharp;dotnet;utility;helper;documentation;</PackageTags>
+        <PackageTags>csharp;dotnet;utility;helper;documentation;intellisense;xml-docs</PackageTags>
         <RepositoryType>git</RepositoryType>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
+    
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="10.0.2" />
+      <!-- XmlDocGenerator provides automatic XML doc generation from DocumentationAttribute -->
+      <PackageReference Include="OmegaLeo.HelperLib.XmlDocGenerator" Version="1.0.0" Condition="'$(PackageReference_XmlDocGenerator_Enabled)' != 'false'" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Attributes\" />
