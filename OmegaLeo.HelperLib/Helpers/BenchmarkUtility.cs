@@ -12,6 +12,9 @@ BenchmarkUtility.Stop(""MyBenchmark"");
 var results = BenchmarkUtility.GetResults(""MyBenchmark"");
 ```")]
     [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Helpers.", "January 28, 2026")]
+    /// <summary>
+    /// Utility class for benchmarking code execution time.
+    /// </summary>
     public class BenchmarkUtility
     {
         private static Dictionary<string, List<long>> _benchmarks = new Dictionary<string, List<long>>();
@@ -83,12 +86,20 @@ Console.WriteLine($""Average time: {averageTime} ms"");
         }
         
         [Documentation("Start", "Starts or restarts the stopwatch for the given key.", null, null)]
+        /// <summary>
+        /// Starts or restarts the stopwatch for the given key.
+        /// </summary>
+        /// <param name="key">The benchmark identifier</param>
         public static void Start(string key)
         {
             GetStopwatch(key).Restart();
         }
 
         [Documentation("Stop", "Stops the stopwatch for the given key and records the elapsed time.", null, null)]
+        /// <summary>
+        /// Stops the stopwatch for the given key and records the elapsed time.
+        /// </summary>
+        /// <param name="key">The benchmark identifier</param>
         public static void Stop(string key)
         {
             if (!_benchmarks.ContainsKey(key))
@@ -101,6 +112,11 @@ Console.WriteLine($""Average time: {averageTime} ms"");
         }
 
         [Documentation("GetResults", "Retrieves the list of recorded times for the given key.", null, null)]
+        /// <summary>
+        /// Retrieves the list of recorded times for the given key.
+        /// </summary>
+        /// <param name="key">The benchmark identifier</param>
+        /// <returns>List of recorded times in milliseconds</returns>
         public static List<long> GetResults(string key)
         {
             return _benchmarks.ContainsKey(key) ? _benchmarks[key] : new List<long>();

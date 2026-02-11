@@ -10,6 +10,11 @@ namespace OmegaLeo.HelperLib.Models
     [Serializable]
     [Documentation("NeoDictionary", "Dictionary like class created to make it easier to display dictionaries in game engines like Unity")]
     [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Models.", "January 28, 2026")]
+    /// <summary>
+    /// Dictionary like class created to make it easier to display dictionaries in game engines like Unity.
+    /// </summary>
+    /// <typeparam name="TKey">The type of keys in the dictionary</typeparam>
+    /// <typeparam name="TValue">The type of values in the dictionary</typeparam>
     public class NeoDictionary<TKey,TValue>
     {
         public List<NeoDictionaryItem<TKey, TValue>> Items = new List<NeoDictionaryItem<TKey, TValue>>();
@@ -23,6 +28,12 @@ namespace OmegaLeo.HelperLib.Models
             : new Dictionary<TKey, TValue>();
         
         [Documentation("TryGetValue", "Tries to get the value from the NeoDictionary for the given key.")]
+        /// <summary>
+        /// Tries to get the value from the NeoDictionary for the given key.
+        /// </summary>
+        /// <param name="key">The key to search for</param>
+        /// <param name="value">The value associated with the key, if found</param>
+        /// <returns>True if the key was found, false otherwise</returns>
         public bool TryGetValue(TKey key, out TValue value)
         {
             var item = Items.FirstOrDefault(x => x.Key.Equals(key));
@@ -39,6 +50,12 @@ namespace OmegaLeo.HelperLib.Models
         }
         
         [Documentation("TryGetValueFromIndex", "Tries to get the value from the NeoDictionary at the given index.")]
+        /// <summary>
+        /// Tries to get the value from the NeoDictionary at the given index.
+        /// </summary>
+        /// <param name="index">The zero-based index of the element</param>
+        /// <param name="value">The value at the specified index, if found</param>
+        /// <returns>True if the index is valid, false otherwise</returns>
         public bool TryGetValueFromIndex(int index, out TValue value)
         {
             if (index < Items.Count)
@@ -58,6 +75,11 @@ namespace OmegaLeo.HelperLib.Models
         }
 
         [Documentation("Add", "Adds a new NeoDictionaryItem to the NeoDictionary.")]
+        /// <summary>
+        /// Adds a new NeoDictionaryItem to the NeoDictionary.
+        /// </summary>
+        /// <param name="key">The key of the element to add</param>
+        /// <param name="value">The value of the element to add</param>
         public void Add(TKey key, TValue value)
         {
             Items.Add(new NeoDictionaryItem<TKey, TValue>(key, value));
