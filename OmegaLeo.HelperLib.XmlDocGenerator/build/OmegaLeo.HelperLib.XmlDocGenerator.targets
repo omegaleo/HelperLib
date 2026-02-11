@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="GenerateXmlDocFromDocumentationAttribute" 
+          AfterTargets="CoreCompile" 
+          Condition="'$(GenerateXmlDocFromDocumentationAttribute)' == 'true' And '$(TargetFramework)' != ''">
+    
+    <PropertyGroup>
+      <!-- Path to the XmlDocGenerator tool in the NuGet package -->
+      <XmlDocGenToolPath>$(MSBuildThisFileDirectory)..\tools\net8.0\OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenToolPath>
+      <TargetAssemblyPath>$(IntermediateOutputPath)$(TargetFileName)</TargetAssemblyPath>
+      <TargetXmlDocPath>$(IntermediateOutputPath)$(TargetName).xml</TargetXmlDocPath>
+    </PropertyGroup>
+
+    <Message Text="[DocumentationAttribute] Generating XML documentation from DocumentationAttribute for $(TargetName)" 
+             Importance="high" 
+             Condition="Exists('$(XmlDocGenToolPath)') And Exists('$(TargetAssemblyPath)')" />
+    
+    <Message Text="[DocumentationAttribute] Tool not found at: $(XmlDocGenToolPath)" 
+             Importance="high" 
+             Condition="!Exists('$(XmlDocGenToolPath)')" />
+    
+    <!-- Run the XmlDocGenerator tool -->
+    <Exec Command="dotnet &quot;$(XmlDocGenToolPath)&quot; &quot;$(TargetAssemblyPath)&quot; &quot;$(TargetXmlDocPath)&quot;"
+          Condition="Exists('$(XmlDocGenToolPath)') And Exists('$(TargetAssemblyPath)')"
+          IgnoreExitCode="true"
+          ContinueOnError="true" />
+  </Target>
+
+</Project>

@@ -38,20 +38,7 @@
       <ProjectReference Include="..\OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj" />
     </ItemGroup>
 
-    <!-- Post-build target to generate XML documentation from DocumentationAttribute -->
-    <Target Name="GenerateXmlDocFromAttributes" AfterTargets="Build">
-        <PropertyGroup>
-            <XmlDocGenExe>$(MSBuildThisFileDirectory)../OmegaLeo.HelperLib.XmlDocGenerator/bin/$(Configuration)/net8.0/OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenExe>
-            <TargetAssembly>$(TargetDir)$(TargetFileName)</TargetAssembly>
-            <TargetXmlDoc>$(TargetDir)$(TargetName).xml</TargetXmlDoc>
-        </PropertyGroup>
-        
-        <Message Text="[DocumentationAttribute] Augmenting XML documentation for $(TargetName) from DocumentationAttribute" Importance="high" Condition="Exists('$(XmlDocGenExe)') And Exists('$(TargetAssembly)')" />
-        
-        <Exec Command="dotnet &quot;$(XmlDocGenExe)&quot; &quot;$(TargetAssembly)&quot; &quot;$(TargetXmlDoc)&quot;"
-              Condition="Exists('$(XmlDocGenExe)') And Exists('$(TargetAssembly)')"
-              IgnoreExitCode="true"
-              ContinueOnError="true" />
-    </Target>
+    <!-- Import local XML doc generation for development -->
+    <Import Project="../XmlDocGeneratorLocal.props" Condition="Exists('../XmlDocGeneratorLocal.props')" />
 
 </Project>

@@ -5,13 +5,41 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>xmldocgen</ToolCommandName>
+    <PackAsTool>false</PackAsTool>
     <PackageId>OmegaLeo.HelperLib.XmlDocGenerator</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Nuno "Omega Leo" Diogo</Authors>
+    <Description>MSBuild task to generate XML documentation from DocumentationAttribute</Description>
+    <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
+    <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+    <PackageTags>msbuild;xml;documentation;attributes</PackageTags>
+    
+    <!-- MSBuild Package Settings -->
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoWarn>NU5100</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reflection.Metadata" Version="8.0.0" />
+    <PackageReference Include="System.Reflection.Metadata" Version="8.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Include the tool exe and its dependencies in the package -->
+  <Target Name="AddToolToPackage" BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <None Include="$(OutputPath)**\*.dll" Pack="true" PackagePath="tools/net8.0/" />
+      <None Include="$(OutputPath)$(AssemblyName).runtimeconfig.json" Pack="true" PackagePath="tools/net8.0/" />
+      <None Include="$(OutputPath)$(AssemblyName).deps.json" Pack="true" PackagePath="tools/net8.0/" />
+    </ItemGroup>
+  </Target>
+
+  <!-- Include build targets in the package -->
+  <ItemGroup>
+    <None Include="build\OmegaLeo.HelperLib.XmlDocGenerator.props" Pack="true" PackagePath="build\" />
+    <None Include="build\OmegaLeo.HelperLib.XmlDocGenerator.targets" Pack="true" PackagePath="build\" />
+    <None Include="buildMultiTargeting\OmegaLeo.HelperLib.XmlDocGenerator.props" Pack="true" PackagePath="buildMultiTargeting\" />
+    <None Include="buildMultiTargeting\OmegaLeo.HelperLib.XmlDocGenerator.targets" Pack="true" PackagePath="buildMultiTargeting\" />
   </ItemGroup>
 
 </Project>

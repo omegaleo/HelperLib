@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  This file provides local development support for XML documentation generation.
+  Import this file in projects that use DocumentationAttribute during development.
+  For NuGet consumers, the XmlDocGenerator package will provide this automatically.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <!-- Enable XML documentation generation from DocumentationAttribute by default -->
+    <GenerateXmlDocFromDocumentationAttribute Condition="'$(GenerateXmlDocFromDocumentationAttribute)' == ''">true</GenerateXmlDocFromDocumentationAttribute>
+  </PropertyGroup>
+
+  <Target Name="GenerateXmlDocFromDocumentationAttribute_Local" 
+          AfterTargets="CoreCompile" 
+          Condition="'$(GenerateXmlDocFromDocumentationAttribute)' == 'true' And '$(TargetFramework)' != ''">
+    
+    <PropertyGroup>
+      <!-- For local development, use the built tool from the sibling project -->
+      <XmlDocGenToolPath_Local>$(MSBuildThisFileDirectory)OmegaLeo.HelperLib.XmlDocGenerator/bin/$(Configuration)/net8.0/OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenToolPath_Local>
+      <TargetAssemblyPath>$(IntermediateOutputPath)$(TargetFileName)</TargetAssemblyPath>
+      <TargetXmlDocPath>$(IntermediateOutputPath)$(TargetName).xml</TargetXmlDocPath>
+    </PropertyGroup>
+
+    <Message Text="[DocumentationAttribute] Generating XML documentation from DocumentationAttribute for $(TargetName)" 
+             Importance="high" 
+             Condition="Exists('$(XmlDocGenToolPath_Local)') And Exists('$(TargetAssemblyPath)')" />
+    
+    <Message Text="[DocumentationAttribute] Local tool not found at: $(XmlDocGenToolPath_Local)" 
+             Importance="high" 
+             Condition="!Exists('$(XmlDocGenToolPath_Local)')" />
+    
+    <!-- Run the XmlDocGenerator tool -->
+    <Exec Command="dotnet &quot;$(XmlDocGenToolPath_Local)&quot; &quot;$(TargetAssemblyPath)&quot; &quot;$(TargetXmlDocPath)&quot;"
+          Condition="Exists('$(XmlDocGenToolPath_Local)') And Exists('$(TargetAssemblyPath)')"
+          IgnoreExitCode="true"
+          ContinueOnError="true" />
+  </Target>
+
+</Project>
