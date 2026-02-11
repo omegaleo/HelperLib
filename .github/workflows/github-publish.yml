@@ -75,3 +75,16 @@ jobs:
         run: dotnet pack "./OmegaLeo.HelperLib.Shared/OmegaLeo.HelperLib.Shared.csproj" -c Release /p:Version=${{ inputs.tag_name }}
       - name: Publish to GitHub Packages
         run: dotnet nuget push ./OmegaLeo.HelperLib.Shared/bin/Release/OmegaLeo.HelperLib.Shared.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate
+
+  publish-xml-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Create Nuget Package
+        run: dotnet pack "./OmegaLeo.HelperLib.XmlDocGenerator/OmegaLeo.HelperLib.XmlDocGenerator.csproj" -c Release /p:Version=${{ inputs.tag_name }}
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push ./OmegaLeo.HelperLib.XmlDocGenerator/bin/Release/OmegaLeo.HelperLib.XmlDocGenerator.${{ inputs.tag_name }}.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/omegaleo/index.json --skip-duplicate

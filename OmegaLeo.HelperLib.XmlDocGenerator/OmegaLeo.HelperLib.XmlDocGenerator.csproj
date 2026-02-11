@@ -42,4 +42,9 @@
     <None Include="buildMultiTargeting\OmegaLeo.HelperLib.XmlDocGenerator.targets" Pack="true" PackagePath="buildMultiTargeting\" />
   </ItemGroup>
 
+  <!-- Pack the generator DLL into the analyzers folder -->
+  <ItemGroup>
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+  
 </Project>
