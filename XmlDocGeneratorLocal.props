@@ -17,7 +17,7 @@
     
     <PropertyGroup>
       <!-- For local development, use the built tool from the sibling project -->
-      <XmlDocGenToolPath_Local>$(MSBuildThisFileDirectory)OmegaLeo.HelperLib.XmlDocGenerator/bin/$(Configuration)/net8.0/OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenToolPath_Local>
+      <XmlDocGenToolPath_Local>$(MSBuildThisFileDirectory)OmegaLeo.HelperLib.XmlDocGenerator/bin/$(Configuration)/net9.0/OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenToolPath_Local>
       <!-- Target the final output assembly and XML, not intermediate -->
       <TargetAssemblyPath>$(TargetDir)$(TargetFileName)</TargetAssemblyPath>
       <TargetXmlDocPath>$(TargetDir)$(TargetName).xml</TargetXmlDocPath>

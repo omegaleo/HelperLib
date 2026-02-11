@@ -12,6 +12,7 @@
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
         <RepositoryType>git</RepositoryType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
