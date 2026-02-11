@@ -1,20 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
+    
+    <!-- NuGet Package Settings -->
+    <PackAsTool>false</PackAsTool>
+    <PackageId>OmegaLeo.HelperLib.CommentGenerator</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Nuno "Omega Leo" Diogo</Authors>
+    <Description>MSBuild task to generate triple-slash XML comments from DocumentationAttribute</Description>
+    <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
+    <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+    <PackageTags>msbuild;documentation;comments;attributes;roslyn</PackageTags>
+    
+    <!-- MSBuild Package Settings -->
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoWarn>NU5100</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Include the tool exe and its dependencies in the package -->
+  <Target Name="AddToolToPackage" BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <None Include="$(OutputPath)**\*.dll" Pack="true" PackagePath="tools/net8.0/" />
+      <None Include="$(OutputPath)$(AssemblyName).runtimeconfig.json" Pack="true" PackagePath="tools/net8.0/" />
+      <None Include="$(OutputPath)$(AssemblyName).deps.json" Pack="true" PackagePath="tools/net8.0/" />
+    </ItemGroup>
+  </Target>
+
+  <!-- Include build targets in the package -->
+  <ItemGroup>
+    <None Include="build\OmegaLeo.HelperLib.CommentGenerator.props" Pack="true" PackagePath="build\" />
+    <None Include="build\OmegaLeo.HelperLib.CommentGenerator.targets" Pack="true" PackagePath="build\" />
+    <None Include="buildMultiTargeting\OmegaLeo.HelperLib.CommentGenerator.props" Pack="true" PackagePath="buildMultiTargeting\" />
+    <None Include="buildMultiTargeting\OmegaLeo.HelperLib.CommentGenerator.targets" Pack="true" PackagePath="buildMultiTargeting\" />
+  </ItemGroup>
 
 </Project>
