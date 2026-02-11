@@ -5,30 +5,19 @@ using OmegaLeo.HelperLib.Shared.Attributes;
 
 namespace OmegaLeo.HelperLib.Helpers
 {
-        /// <summary>
-    /// Utility class for benchmarking code execution time.
-    /// </summary>
-[Documentation(nameof(BenchmarkUtility), "Utility class for benchmarking code execution time.", null, @"```csharp
+    [Documentation(nameof(BenchmarkUtility), "Utility class for benchmarking code execution time.", null, @"```csharp
 BenchmarkUtility.Start(""MyBenchmark"");
 // Code to benchmark
 BenchmarkUtility.Stop(""MyBenchmark"");
 var results = BenchmarkUtility.GetResults(""MyBenchmark"");
 ```")]
     [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Helpers.", "January 28, 2026")]
-    /// <summary>
-    /// Utility class for benchmarking code execution time.
-    /// </summary>
     public class BenchmarkUtility
     {
         private static Dictionary<string, List<long>> _benchmarks = new Dictionary<string, List<long>>();
         private static Dictionary<string, Stopwatch> _stopwatches = new Dictionary<string, Stopwatch>();
 
-                /// <summary>
-        /// Retrieves or creates a Stopwatch instance for the given key.
-        /// </summary>
-        /// <param name="key">The key parameter</param>
-        /// <returns>The return value</returns>
-[Documentation("GetStopwatch", "Retrieves or creates a Stopwatch instance for the given key.", null, null)]
+        [Documentation("GetStopwatch", "Retrieves or creates a Stopwatch instance for the given key.", null, null)]
         private static Stopwatch GetStopwatch(string key)
         {
             Stopwatch stopwatch;
@@ -42,12 +31,7 @@ var results = BenchmarkUtility.GetResults(""MyBenchmark"");
             return stopwatch;
         }
 
-                /// <summary>
-        /// Records the execution time of the provided action and returns the elapsed time in milliseconds.
-        /// </summary>
-        /// <param name="actionToRecord">The actionToRecord parameter</param>
-        /// <returns>The return value</returns>
-[Documentation("Record", "Records the execution time of the provided action and returns the elapsed time in milliseconds.", null, @"```csharp
+        [Documentation("Record", "Records the execution time of the provided action and returns the elapsed time in milliseconds.", null, @"```csharp
 var time = BenchmarkUtility.Record(() =>
 {
     // Code to benchmark
@@ -66,13 +50,7 @@ Console.WriteLine($""Elapsed time: {time} ms"");
             return stopwatch.ElapsedMilliseconds;
         }
         
-                /// <summary>
-        /// Records the execution time of the provided action, saves it under the given key, and returns the elapsed time in milliseconds.
-        /// </summary>
-        /// <param name="key">The key parameter</param>
-        /// <param name="actionToRecord">The actionToRecord parameter</param>
-        /// <returns>The return value</returns>
-[Documentation("RecordAndSaveToResults", "Records the execution time of the provided action, saves it under the given key, and returns the elapsed time in milliseconds.", null, @"```csharp
+        [Documentation("RecordAndSaveToResults", "Records the execution time of the provided action, saves it under the given key, and returns the elapsed time in milliseconds.", null, @"```csharp
 var time = BenchmarkUtility.RecordAndSaveToResults(""MyBenchmark"", () =>
 {
     // Code to benchmark
@@ -104,29 +82,13 @@ Console.WriteLine($""Average time: {averageTime} ms"");
             return stopwatch.ElapsedMilliseconds;
         }
         
-                /// <summary>
-        /// Starts or restarts the stopwatch for the given key.
-        /// </summary>
-        /// <param name="key">The key parameter</param>
-[Documentation("Start", "Starts or restarts the stopwatch for the given key.", null, null)]
-        /// <summary>
-        /// Starts or restarts the stopwatch for the given key.
-        /// </summary>
-        /// <param name="key">The benchmark identifier</param>
+        [Documentation("Start", "Starts or restarts the stopwatch for the given key.", null, null)]
         public static void Start(string key)
         {
             GetStopwatch(key).Restart();
         }
 
-                /// <summary>
-        /// Stops the stopwatch for the given key and records the elapsed time.
-        /// </summary>
-        /// <param name="key">The key parameter</param>
-[Documentation("Stop", "Stops the stopwatch for the given key and records the elapsed time.", null, null)]
-        /// <summary>
-        /// Stops the stopwatch for the given key and records the elapsed time.
-        /// </summary>
-        /// <param name="key">The benchmark identifier</param>
+        [Documentation("Stop", "Stops the stopwatch for the given key and records the elapsed time.", null, null)]
         public static void Stop(string key)
         {
             if (!_benchmarks.ContainsKey(key))
@@ -138,36 +100,19 @@ Console.WriteLine($""Average time: {averageTime} ms"");
             _benchmarks[key].Add(GetStopwatch(key).ElapsedMilliseconds);
         }
 
-                /// <summary>
-        /// Retrieves the list of recorded times for the given key.
-        /// </summary>
-        /// <param name="key">The key parameter</param>
-        /// <returns>The return value</returns>
-[Documentation("GetResults", "Retrieves the list of recorded times for the given key.", null, null)]
-        /// <summary>
-        /// Retrieves the list of recorded times for the given key.
-        /// </summary>
-        /// <param name="key">The benchmark identifier</param>
-        /// <returns>List of recorded times in milliseconds</returns>
+        [Documentation("GetResults", "Retrieves the list of recorded times for the given key.", null, null)]
         public static List<long> GetResults(string key)
         {
             return _benchmarks.ContainsKey(key) ? _benchmarks[key] : new List<long>();
         }
 
-                /// <summary>
-        /// Clears all recorded benchmark results.
-        /// </summary>
-[Documentation("ClearResults", "Clears all recorded benchmark results.", null, null)]
+        [Documentation("ClearResults", "Clears all recorded benchmark results.", null, null)]
         public static void ClearResults()
         {
             _benchmarks.Clear();
         }
 
-                /// <summary>
-        /// Retrieves all recorded benchmark results.
-        /// </summary>
-        /// <returns>The return value</returns>
-[Documentation("GetAllResults", "Retrieves all recorded benchmark results.", null, null)]
+        [Documentation("GetAllResults", "Retrieves all recorded benchmark results.", null, null)]
         public static Dictionary<string, List<long>> GetAllResults()
         {
             return new Dictionary<string, List<long>>(_benchmarks);
