@@ -277,16 +277,11 @@ static string GetTypeName(Type type)
 
 static void AddOrUpdateMember(XElement membersElement, string memberName, object attribute, Type docAttrType)
 {
-    // Extract attribute values using reflection
-    var titleProp = docAttrType.GetField("Title");
-    var descProp = docAttrType.GetField("Description");
-    var argsProp = docAttrType.GetField("Args");
-    var exampleProp = docAttrType.GetField("CodeExample");
-    
-    var title = titleProp?.GetValue(attribute) as string ?? "";
-    var description = descProp?.GetValue(attribute) as string ?? "";
-    var args = argsProp?.GetValue(attribute) as string[] ?? Array.Empty<string>();
-    var codeExample = exampleProp?.GetValue(attribute) as string ?? "";
+    // Extract attribute values using reflection - check both fields and properties
+    var title = GetMemberValue<string>(docAttrType, attribute, "Title") ?? "";
+    var description = GetMemberValue<string>(docAttrType, attribute, "Description") ?? "";
+    var args = GetMemberValue<string[]>(docAttrType, attribute, "Args") ?? Array.Empty<string>();
+    var codeExample = GetMemberValue<string>(docAttrType, attribute, "CodeExample") ?? "";
     
     // Find or create the member element
     var existingMember = membersElement.Elements("member")
@@ -314,7 +309,7 @@ static void AddOrUpdateMember(XElement membersElement, string memberName, object
     }
     
     // Add parameter descriptions as remarks
-    if (args != null && args.Length > 0)
+    if (args.Length > 0)
     {
         var remarksContent = new StringBuilder();
         remarksContent.AppendLine();
@@ -331,4 +326,23 @@ static void AddOrUpdateMember(XElement membersElement, string memberName, object
     {
         memberElement.Add(new XElement("example", new XCData(codeExample)));
     }
+}
+
+static T? GetMemberValue<T>(Type type, object instance, string memberName) where T : class
+{
+    // Try as field first
+    var field = type.GetField(memberName);
+    if (field != null)
+    {
+        return field.GetValue(instance) as T;
+    }
+    
+    // Try as property
+    var property = type.GetProperty(memberName);
+    if (property != null)
+    {
+        return property.GetValue(instance) as T;
+    }
+    
+    return null;
 }
