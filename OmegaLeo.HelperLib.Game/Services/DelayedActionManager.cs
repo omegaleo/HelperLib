@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 using OmegaLeo.HelperLib.Game.Handlers;
 using OmegaLeo.HelperLib.Game.Models;
 

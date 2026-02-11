@@ -4,13 +4,12 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
         <Title>Omega Leo's Helper Library	 - Game Logic</Title>
-        <Version>0.0.2</Version>
+        <Version>1.2.1.1</Version>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/omegaleo/HelperLib/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <PackageLicenseExpression>AGPL-3.0</PackageLicenseExpression>
+        <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
@@ -20,8 +19,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.3" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="README.md">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </None>
+      <None Update="CHANGELOG.md">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

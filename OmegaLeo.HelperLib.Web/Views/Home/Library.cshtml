@@ -1,6 +1,6 @@
 @* File: `OmegaLeo.HelperLib.Web/Views/Home/Library.cshtml` *@
 @using ColorCode.Styling
-@using GameDevLibrary.Extensions
+@using OmegaLeo.HelperLib.Extensions
 @using Markdig
 @model OmegaLeo.HelperLib.Web.Models.LibraryDocumentationViewModel
 @{
@@ -83,7 +83,7 @@
                                                 {
                                                     <tr>
                                                         <td><code>@desc.Title</code></td>
-                                                        <td>@Html.Raw(desc.Description)<br/>
+                                                        <td>@Html.Raw(Markdig.Markdown.ToHtml(desc.Description))<br/>
                                                             @if (desc.CodeExample.IsNotNullOrEmpty())
                                                             {
                                                                 <strong>Example:</strong><br/>

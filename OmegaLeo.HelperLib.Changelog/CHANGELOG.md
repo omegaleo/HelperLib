@@ -1,7 +1,13 @@
-# Changelog
+# Changelog  
+## Version 1.2.0
 
-## Version v1.0.0
+**OmegaLeo.HelperLib.Changelog.Helpers**
+- **ChangelogHelper**:
+  - Created ChangelogHelper to generate markdown from changelog attributes.
 
-- **Class: ChangelogTool**: Created the class ChangelogTool to extract changelogs via attributes
-- **Class: ChangelogAttribute**: Created ChangelogAttribute to be used to register changes in the code.
+## Version 1.0.0
+
+**OmegaLeo.HelperLib.Changelog.Tools**
+- **ChangelogTool**:
+  - Created the class ChangelogTool to extract changelogs via attributes
 

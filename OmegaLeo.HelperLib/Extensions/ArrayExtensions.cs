@@ -1,8 +1,9 @@
-﻿using NetFlow.DocumentationHelper.Library.Attributes;
+﻿using OmegaLeo.HelperLib.Shared.Attributes;
 
-namespace GameDevLibrary.Extensions
+namespace OmegaLeo.HelperLib.Extensions
 {
     [Documentation("Array Extensions", "Set of extension methods to help with Arrays.")]
+    [Changelog("1.2.0", "Fixed root namespace to OmegaLeo.HelperLib.Extensions.", "January 28, 2026")]
     public static class ArrayExtensions
     {
         // Idea obtained from TaroDev's video on things to do in Unity - https://youtu.be/Ic5ux-tpkCE?t=302

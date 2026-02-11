@@ -3,28 +3,34 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
-        <RootNamespace>GameDevLibrary</RootNamespace>
-        <Version>0.0.2</Version>
+        <RootNamespace>OmegaLeo.HelperLib</RootNamespace>
+        <Version>1.2.1.1</Version>
         <Title>Omega Leo's Helper Library</Title>
         <Authors>Nuno "Omega Leo" Diogo</Authors>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/omegaleo/HelperLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/omegaleo/HelperLib</RepositoryUrl>
-        <PackageLicenseUrl>https://github.com/omegaleo/HelperLib/blob/main/LICENSE</PackageLicenseUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <PackageLicenseExpression>AGPL-3.0</PackageLicenseExpression>
+        <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <PackageTags>csharp;dotnet;utility;helper;benchmark</PackageTags>
         <RepositoryType>git</RepositoryType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NetFlow.DocumentationHelper.Library" Version="1.1.3" />
+        <None Include="README.md" Pack="true" PackagePath="\">
+          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Include="CHANGELOG.md" Pack="true" PackagePath="\">
+          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Include="LICENSE.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="README.md" Pack="true" PackagePath="\"/>
-        <None Include="CHANGELOG.md" Pack="true" PackagePath="\"/>
-        <None Include="LICENSE.md" Pack="true" PackagePath="\"/>
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Changelog\OmegaLeo.HelperLib.Changelog.csproj" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Documentation\OmegaLeo.HelperLib.Documentation.csproj" />
+      <ProjectReference Include="..\OmegaLeo.HelperLib.Shared\OmegaLeo.HelperLib.Shared.csproj" />
     </ItemGroup>
 
 </Project>

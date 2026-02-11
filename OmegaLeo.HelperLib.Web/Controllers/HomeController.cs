@@ -3,10 +3,11 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-using GameDevLibrary.Helpers;
+using OmegaLeo.HelperLib.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using NetFlow.DocumentationHelper.Library.Helpers;
-using NetFlow.DocumentationHelper.Library.Models;
+using OmegaLeo.HelperLib.Changelog.Helpers;
+using OmegaLeo.HelperLib.Documentation.Helpers;
+using OmegaLeo.HelperLib.Documentation.Models;
 using OmegaLeo.HelperLib.Changelog.Tools;
 using OmegaLeo.HelperLib.Web.Models;
 
@@ -52,7 +53,22 @@ public class HomeController : Controller
                 "Game Development Library",
                 "Game development utilities for Unity and Godot",
                 "OmegaLeo.HelperLib.Game"
-            )
+            ),
+            ["documentation"] = GenerateLibraryDocs(
+                typeof(OmegaLeo.HelperLib.Documentation.Helpers.DocumentationHelperTool).Assembly,
+                Path.Combine(root, "changelogs", "OmegaLeo.HelperLib.Documentation.CHANGELOG.md"),
+                "Documentation Library",
+                "Tools for generating documentation from code attributes",
+                "OmegaLeo.HelperLib.Documentation",
+                true
+            ),
+            ["shared"] = GenerateLibraryDocs(
+                typeof(OmegaLeo.HelperLib.Shared.Attributes.ChangelogAttribute).Assembly,
+                Path.Combine(root, "shared", "OmegaLeo.HelperLib.Shared.CHANGELOG.md"),
+                "Shared Library",
+                "Library of shared attributes and utilities used across other OmegaLeo.HelperLib packages",
+                "OmegaLeo.HelperLib.Shared"
+            ),
         };
 
         _logger.LogInformation("Initialized {Count} libraries", _libraryCache.Count);
@@ -99,11 +115,11 @@ public class HomeController : Controller
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             var target = assemblies.FirstOrDefault(a =>
-                a.GetName().Name.Equals("NetFlow.DocumentationHelper.Library", StringComparison.OrdinalIgnoreCase));
+                a.GetName().Name.Equals("OmegaLeo.HelperLib.Documentation", StringComparison.OrdinalIgnoreCase));
 
             if (target == null)
             {
-                _logger.LogWarning("NetFlow.DocumentationHelper.Library not loaded. Loaded assemblies ({Count}):",
+                _logger.LogWarning("OmegaLeo.HelperLib.Documentation not loaded. Loaded assemblies ({Count}):",
                     assemblies.Length);
                 foreach (var a in assemblies.OrderBy(a => a.GetName().Name))
                 {
@@ -120,7 +136,7 @@ public class HomeController : Controller
             Type attrType = null;
             try
             {
-                attrType = target.GetType("NetFlow.DocumentationHelper.Library.Attributes.DocumentationAttribute",
+                attrType = target.GetType("OmegaLeo.HelperLib.Documentation.Attributes.DocumentationAttribute",
                     false, true);
             }
             catch (Exception ex)
@@ -238,7 +254,7 @@ public class HomeController : Controller
     }
 
     private LibraryDocumentationViewModel GenerateLibraryDocs(Assembly assembly, string changelogPath,
-        string displayName, string description, string nugetPackageId)
+        string displayName, string description, string nugetPackageId, bool generateForDocumentationAssembly = false)
     {
         _logger.LogInformation("=== Starting GenerateLibraryDocs for {Assembly} ===", assembly.GetName().Name);
         _logger.LogInformation("Assembly location: {Location}", assembly.Location ?? "<in-memory>");
@@ -278,7 +294,7 @@ public class HomeController : Controller
         try
         {
             // Pass the specific assembly to only scan that assembly
-            var result = DocumentationHelperTool.GenerateDocumentation();
+            var result = DocumentationHelperTool.GenerateDocumentation(generateForDocumentationAssembly);
             allDocumentation = result?
                 .Where(d => d.AssemblyName?.Equals(assembly.GetName().Name ,StringComparison.OrdinalIgnoreCase) == true)
                 .ToList() ?? Enumerable.Empty<DocumentationStructure>();
@@ -307,7 +323,7 @@ public class HomeController : Controller
             throw;
         }
 
-        var changelogMarkdown = string.Empty;
+        /*var changelogMarkdown = string.Empty;
         if (System.IO.File.Exists(changelogPath))
         {
             try
@@ -324,14 +340,14 @@ public class HomeController : Controller
         else
         {
             _logger.LogWarning("Changelog file not found at {Path}", changelogPath);
-        }
+        }*/
 
         var viewModel = new LibraryDocumentationViewModel
         {
             LibraryName = displayName,
             Description = description,
             NuGetPackageId = nugetPackageId,
-            ChangelogMarkdown = changelogMarkdown,
+            ChangelogMarkdown = ChangelogHelper.GetChangelogMarkdown(new []{assembly}),
             Documentation = allDocumentation.ToList()
         };
 

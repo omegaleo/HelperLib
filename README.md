@@ -1,4 +1,4 @@
-# HelperLib
+# Omega Leo's Helper Library
 
 Lightweight utility library for C\# projects and game development helpers.
 
@@ -34,11 +34,12 @@ Add the library to your project via NuGet:
 dotnet add package OmegaLeo.HelperLib
 dotnet add package OmegaLeo.HelperLib.Game
 dotnet add package OmegaLeo.HelperLib.Changelog
+dotnet add package OmegaLeo.HelperLib.Documentation
 ```
   
 ## Documentation
 The documentation for this project can be found at [https://library.omegaleo.dev](https://library.omegaleo.dev).
-This documentation is automatically generated from the code using the [NetFlow.DocumentationHelper.Library](https://github.com/omegaleo/Netflow.DocumentationHelper).
+This documentation is automatically generated from the code using the [OmegaLeo.HelperLib.Documentation package](https://www.nuget.org/packages/OmegaLeo.HelperLib.Documentation).
 
 ## Contributing
 Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.

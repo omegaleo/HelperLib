@@ -3,8 +3,8 @@
 // /media/omegaleo/Development/Library Dev/HelperLib
 
 using System.Reflection;
-using GameDevLibrary.Extensions;
-using GameDevLibrary.Helpers;
+using OmegaLeo.HelperLib.Extensions;
+using OmegaLeo.HelperLib.Helpers;
 using LibGit2Sharp;
 using OmegaLeo.HelperLib.Changelog.Tools;
 using OmegaLeo.HelperLib.Git;

@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using NetFlow.DocumentationHelper.Library.Attributes;
-using OmegaLeo.HelperLib.Changelog.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 
 namespace OmegaLeo.HelperLib.Changelog.Tools
 {
-    [Changelog("v1.0.0", "Created the class ChangelogTool to extract changelogs via attributes")]
+    [Changelog("1.0.0", "Created the class ChangelogTool to extract changelogs via attributes")]
     [Documentation("ChangelogTool", "Provides methods to extract changelog information from assembly attributes.")]
     public class ChangelogTool
     {

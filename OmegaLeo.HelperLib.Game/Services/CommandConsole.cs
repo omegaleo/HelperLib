@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 using OmegaLeo.HelperLib.Game.Models;
 
 namespace OmegaLeo.HelperLib.Game.Services

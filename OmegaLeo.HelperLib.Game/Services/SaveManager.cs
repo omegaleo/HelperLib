@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using NetFlow.DocumentationHelper.Library.Attributes;
+using OmegaLeo.HelperLib.Shared.Attributes;
 using Newtonsoft.Json;
 using OmegaLeo.HelperLib.Game.Interfaces;
 

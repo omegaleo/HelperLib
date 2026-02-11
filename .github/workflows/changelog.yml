@@ -6,35 +6,55 @@ on:
         description: 'Tag name:'
         type: string
         required: true
-run-name: "Generating changelog for Release v${{github.event.inputs.tagName}}"
+run-name: "Generating changelog and Creating Tag for Release v${{github.event.inputs.tagName}}"
 jobs:
   generate_changelog:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref }}
           token: ${{ secrets.TOKEN }}
+          fetch-depth: 0
+
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-      - name: Update Project Versions
+          dotnet-version: '9.0.x'
+
+      - name: Update OmegaLeo.HelperLib Version
         run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib/OmegaLeo.HelperLib.csproj"
 
-      - name: Update Project Versions
+      - name: Update OmegaLeo.HelperLib.Changelog Version
         run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Changelog/OmegaLeo.HelperLib.Changelog.csproj"
-      
-      - name: Build and Run Changelog Generator
-        run: dotnet run --project "./OmegaLeo.HelperLib.ChangelogHandler/OmegaLeo.HelperLib.ChangelogHandler.csproj"
+
+      - name: Update OmegaLeo.HelperLib.Documentation Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Documentation/OmegaLeo.HelperLib.Documentation.csproj"
+
+      - name: Update OmegaLeo.HelperLib.Game Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Game/OmegaLeo.HelperLib.Game.csproj"
+
+      - name: Update OmegaLeo.HelperLib.Shared Version
+        run: sed -i "s/\(<Version>\)[0-9]\+\.[0-9]\+\.[0-9]\+/\1${{github.event.inputs.tagName}}/" "./OmegaLeo.HelperLib.Shared/OmegaLeo.HelperLib.Shared.csproj"
+
+      - name: Build Solution
+        run: dotnet build --configuration Release
+
+      - name: Run Changelog Generator
+        run: dotnet run --project "./OmegaLeo.HelperLib.ChangelogHandler/OmegaLeo.HelperLib.ChangelogHandler.csproj" --configuration Release
         env:
-          UNITYFLOW_SECRET: ${{ secrets.TOKEN }}
-      - name: Create Tag
+          TAG_VERSION: ${{ github.event.inputs.tagName }}
+
+      - name: Commit and Push Changes
         run: |
           git config --local user.email "nunodiogo@omegaleo.pt"
           git config --local user.name "Nuno Diogo"
           git add .
-          git commit -m "Automatically generated changelog for v${{github.event.inputs.tagName}}"
+          git diff --staged --quiet || git commit -m "chore: update changelog and version to v${{github.event.inputs.tagName}}"
+          git push origin ${{ github.ref }}
+
+      - name: Create and Push Tag
+        run: |
           git tag -a "${{ github.event.inputs.tagName }}" -m "Release ${{ github.event.inputs.tagName }}"
           git push origin "${{ github.event.inputs.tagName }}"
