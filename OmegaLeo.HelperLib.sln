@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Shared",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.XmlDocGenerator", "OmegaLeo.HelperLib.XmlDocGenerator\OmegaLeo.HelperLib.XmlDocGenerator.csproj", "{1BB073B8-F03B-4F9A-A526-F38CB3800AA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Tests", "OmegaLeo.HelperLib.Tests\OmegaLeo.HelperLib.Tests.csproj", "{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,6 +168,18 @@ Global
 		{1BB073B8-F03B-4F9A-A526-F38CB3800AA5}.Release|x64.Build.0 = Release|Any CPU
 		{1BB073B8-F03B-4F9A-A526-F38CB3800AA5}.Release|x86.ActiveCfg = Release|Any CPU
 		{1BB073B8-F03B-4F9A-A526-F38CB3800AA5}.Release|x86.Build.0 = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|x64.Build.0 = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Debug|x86.Build.0 = Debug|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|x64.ActiveCfg = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|x64.Build.0 = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|x86.ActiveCfg = Release|Any CPU
+		{55C4F738-3B98-42D6-BCD2-6A9D6E0FC07D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
