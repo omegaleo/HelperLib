@@ -1,5 +1,27 @@
 # Documentation Attribute IDE Tooltip Example
 
+## Recommended: Use Markdown for Code Examples
+
+For the best IDE experience, we **strongly recommend using markdown code fences** in your `codeExample` parameter:
+
+```csharp
+[Documentation(
+    "MyMethod",
+    "Does something cool",
+    new[] { "param: Description" },
+    @"```csharp
+// Use markdown code fences like this!
+MyMethod(""example"");
+```"
+)]
+```
+
+This provides:
+- ✅ Proper syntax highlighting in IDEs
+- ✅ Better formatting in IntelliSense tooltips
+- ✅ Consistent appearance across Visual Studio, Rider, and VS Code
+- ✅ Markdown rendering in documentation generators
+
 ## Before (Without XML Doc Generator)
 
 When using the `DocumentationAttribute` without the XML Doc Generator, IDEs would not show the documentation:

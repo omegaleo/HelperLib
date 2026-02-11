@@ -12,14 +12,15 @@
   </PropertyGroup>
 
   <Target Name="GenerateXmlDocFromDocumentationAttribute_Local" 
-          AfterTargets="CoreCompile" 
+          AfterTargets="Build" 
           Condition="'$(GenerateXmlDocFromDocumentationAttribute)' == 'true' And '$(TargetFramework)' != ''">
     
     <PropertyGroup>
       <!-- For local development, use the built tool from the sibling project -->
       <XmlDocGenToolPath_Local>$(MSBuildThisFileDirectory)OmegaLeo.HelperLib.XmlDocGenerator/bin/$(Configuration)/net8.0/OmegaLeo.HelperLib.XmlDocGenerator.dll</XmlDocGenToolPath_Local>
-      <TargetAssemblyPath>$(IntermediateOutputPath)$(TargetFileName)</TargetAssemblyPath>
-      <TargetXmlDocPath>$(IntermediateOutputPath)$(TargetName).xml</TargetXmlDocPath>
+      <!-- Target the final output assembly and XML, not intermediate -->
+      <TargetAssemblyPath>$(TargetDir)$(TargetFileName)</TargetAssemblyPath>
+      <TargetXmlDocPath>$(TargetDir)$(TargetName).xml</TargetXmlDocPath>
     </PropertyGroup>
 
     <Message Text="[DocumentationAttribute] Generating XML documentation from DocumentationAttribute for $(TargetName)" 
@@ -29,6 +30,10 @@
     <Message Text="[DocumentationAttribute] Local tool not found at: $(XmlDocGenToolPath_Local)" 
              Importance="high" 
              Condition="!Exists('$(XmlDocGenToolPath_Local)')" />
+    
+    <Message Text="[DocumentationAttribute] Target assembly not found at: $(TargetAssemblyPath)" 
+             Importance="high" 
+             Condition="!Exists('$(TargetAssemblyPath)')" />
     
     <!-- Run the XmlDocGenerator tool -->
     <Exec Command="dotnet &quot;$(XmlDocGenToolPath_Local)&quot; &quot;$(TargetAssemblyPath)&quot; &quot;$(TargetXmlDocPath)&quot;"
