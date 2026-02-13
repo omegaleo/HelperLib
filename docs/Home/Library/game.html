@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Development Library - OmegaLeo Helper Libraries</title>
+    <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/site.css%3Fv=AK2YraxbvzgrpO6A1NqAHflCP7fbweSjdyWpd3ERsLE.css" />
+</head>
+<body>
+    <header b-pqzonzw7gm>
+        <nav b-pqzonzw7gm class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div b-pqzonzw7gm class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    OmegaLeo Helper Libraries
+                </a>
+                <button b-pqzonzw7gm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span b-pqzonzw7gm class="navbar-toggler-icon"></span>
+                </button>
+                <div b-pqzonzw7gm class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-pqzonzw7gm class="navbar-nav flex-grow-1">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="core.html">Core</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="changelog.html">Changelog</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="game.html">Game Dev</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="documentation.html">Documentation</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="shared.html">Shared Components</a>
+                        </li>
+                    </ul>
+                    
+                    <ul b-pqzonzw7gm class="navbar-nav ms-auto">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a b-pqzonzw7gm class="nav-link" href="https://github.com/omegaleo/HelperLib" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+                                <i b-pqzonzw7gm class="bi bi-github" style="font-size:1.25rem;"></i> View on Github
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main b-pqzonzw7gm role="main" class="pb-3">
+        
+<div class="container-fluid mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+            <li class="breadcrumb-item active">Game Development Library</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sticky-top" style="top: 20px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Game Development Library</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a class="list-group-item list-group-item-action" href="game.html#overview">
+                                <i class="bi bi-info-circle me-2"></i>Overview
+                            </a>
+                                <a class="list-group-item list-group-item-action" href="game.html#namespace-OmegaLeo-HelperLib-Game">
+                                    <i class="bi bi-folder me-2"></i>OmegaLeo.HelperLib.Game
+                                </a>
+                            <a class="list-group-item list-group-item-action" href="game.html#changelog">
+                                <i class="bi bi-clock-history me-2"></i>Changelog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="overview" class="mb-5">
+                <h2>Game Development Library</h2>
+                <p class="lead">Game development utilities for Unity and Godot</p>
+                <hr />
+            </div>
+
+                <div id="namespace-OmegaLeo-HelperLib-Game" class="mb-5">
+                    <h3>OmegaLeo.HelperLib.Game</h3>
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">CommandConsole</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>RegisterCommand</code></td>
+                                                        <td><p>Registers a new command with the console.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RegisterCommand</code></td>
+                                                        <td><p>Registers a new command with the console using a delegate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>UnregisterCommand</code></td>
+                                                        <td><p>Removes a command from the console.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ExecuteCommand</code></td>
+                                                        <td><p>Executes a command string.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Output</code></td>
+                                                        <td><p>Outputs a message to the console.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Error</code></td>
+                                                        <td><p>Outputs an error message to the console.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ClearHistory</code></td>
+                                                        <td><p>Clears command history.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>GetAutoComplete</code></td>
+                                                        <td><p>Gets autocomplete suggestions for partial input.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RegisterDefaultCommands</code></td>
+                                                        <td><p>Registers built-in commands.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">DelayedActionHandler</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>DelayedActionHandler</code></td>
+                                                        <td><p>Handler for managing delayed actions, allowing cancellation and status checking.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> action = <span style="color:#569CD6;">new</span> DelayedAction(...);
+<span style="color:#569CD6;">var</span> handler = <span style="color:#569CD6;">new</span> DelayedActionHandler(action);
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Cancel</code></td>
+                                                        <td><p>Cancels the delayed action if it has not yet executed.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+handler.Cancel();
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">DelayedActionManager</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>PendingActionsCount</code></td>
+                                                        <td><p>Gets the count of pending delayed actions.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RunAfter</code></td>
+                                                        <td><p>Schedules an action to run after a specified delay.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RunRepeating</code></td>
+                                                        <td><p>Schedules an action to run repeatedly at specified intervals.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RunAfterCancellable</code></td>
+                                                        <td><p>Schedules an action to run after a delay and returns a handler to cancel it if needed.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>CancelAll</code></td>
+                                                        <td><p>Cancels all pending delayed actions.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">ListExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>Shuffle</code></td>
+                                                        <td><p>Shuffles the elements of the list in place using the provided RandomNumberGenerator.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> list = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span>};
+<span style="color:#569CD6;">var</span> rng = <span style="color:#569CD6;">new</span> RandomNumberGenerator();
+<span style="color:#57A64A;">// List before: [1, 2, 3, 4]</span>
+list.Shuffle(rng);
+<span style="color:#57A64A;">// List after: [3, 1, 4, 2] (example output)</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">SaveManager</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>Save</code></td>
+                                                        <td><p>Saves data to a JSON file.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Load</code></td>
+                                                        <td><p>Loads data from a JSON file.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>TryLoad</code></td>
+                                                        <td><p>Attempts to load data from a JSON file, returning a success flag.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>SaveExists</code></td>
+                                                        <td><p>Checks if a save file exists.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>DeleteSave</code></td>
+                                                        <td><p>Deletes a save file.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>GetAllSaveFiles</code></td>
+                                                        <td><p>Retrieves all save files in the save directory.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">WeightedPicker</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Game</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>WeightedPicker.Pick</code></td>
+                                                        <td><p>Picks a random item from a dictionary of items with associated weights.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .sticky-top {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+    </main>
+
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/site.js%3Fv=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM"></script>
+    
+</body>
+</html>

@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib", "OmegaLeo.HelperLib\OmegaLeo.HelperLib.csproj", "{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Git", "OmegaLeo.HelperLib.Git\OmegaLeo.HelperLib.Git.csproj", "{A9579FFB-9A05-4EBF-B298-513C48FB0F91}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.ConsoleApp", "OmegaLeo.HelperLib.ConsoleApp\OmegaLeo.HelperLib.ConsoleApp.csproj", "{3B77B177-FD47-470A-B0EF-01EF8B30CE09}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Changelog", "OmegaLeo.HelperLib.Changelog\OmegaLeo.HelperLib.Changelog.csproj", "{378D8125-66B5-42B8-9881-33F951E5E04A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.ChangelogHandler", "OmegaLeo.HelperLib.ChangelogHandler\OmegaLeo.HelperLib.ChangelogHandler.csproj", "{359536F7-02DE-43E9-A383-D83853227B0F}"
@@ -20,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFi
 		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE = LICENSE
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{750F2E9A-2703-4732-98D7-29C658368E48}"
@@ -28,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{750F
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\nuget-publish.yml = .github\workflows\nuget-publish.yml
 		.github\workflows\github-publish.yml = .github\workflows\github-publish.yml
+		.github\workflows\jetbrains-publish.yml = .github\workflows\jetbrains-publish.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaLeo.HelperLib.Documentation", "OmegaLeo.HelperLib.Documentation\OmegaLeo.HelperLib.Documentation.csproj", "{AE69480D-5956-46CB-9028-E4723735E37E}"
@@ -44,14 +42,6 @@ Global
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7256931-5D66-46FA-BA50-22B2FA4CD9E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9579FFB-9A05-4EBF-B298-513C48FB0F91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B77B177-FD47-470A-B0EF-01EF8B30CE09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{378D8125-66B5-42B8-9881-33F951E5E04A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{378D8125-66B5-42B8-9881-33F951E5E04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{378D8125-66B5-42B8-9881-33F951E5E04A}.Release|Any CPU.ActiveCfg = Release|Any CPU

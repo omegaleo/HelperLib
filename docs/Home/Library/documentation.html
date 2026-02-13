@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation Library - OmegaLeo Helper Libraries</title>
+    <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/site.css%3Fv=AK2YraxbvzgrpO6A1NqAHflCP7fbweSjdyWpd3ERsLE.css" />
+</head>
+<body>
+    <header b-pqzonzw7gm>
+        <nav b-pqzonzw7gm class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div b-pqzonzw7gm class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    OmegaLeo Helper Libraries
+                </a>
+                <button b-pqzonzw7gm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span b-pqzonzw7gm class="navbar-toggler-icon"></span>
+                </button>
+                <div b-pqzonzw7gm class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-pqzonzw7gm class="navbar-nav flex-grow-1">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="core.html">Core</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="changelog.html">Changelog</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="game.html">Game Dev</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="documentation.html">Documentation</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="shared.html">Shared Components</a>
+                        </li>
+                    </ul>
+                    
+                    <ul b-pqzonzw7gm class="navbar-nav ms-auto">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a b-pqzonzw7gm class="nav-link" href="https://github.com/omegaleo/HelperLib" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+                                <i b-pqzonzw7gm class="bi bi-github" style="font-size:1.25rem;"></i> View on Github
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main b-pqzonzw7gm role="main" class="pb-3">
+        
+<div class="container-fluid mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+            <li class="breadcrumb-item active">Documentation Library</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sticky-top" style="top: 20px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Documentation Library</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a class="list-group-item list-group-item-action" href="documentation.html#overview">
+                                <i class="bi bi-info-circle me-2"></i>Overview
+                            </a>
+                                <a class="list-group-item list-group-item-action" href="documentation.html#namespace-OmegaLeo-HelperLib-Documentation">
+                                    <i class="bi bi-folder me-2"></i>OmegaLeo.HelperLib.Documentation
+                                </a>
+                            <a class="list-group-item list-group-item-action" href="documentation.html#changelog">
+                                <i class="bi bi-clock-history me-2"></i>Changelog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="overview" class="mb-5">
+                <h2>Documentation Library</h2>
+                <p class="lead">Tools for generating documentation from code attributes</p>
+                <hr />
+            </div>
+
+                <div id="namespace-OmegaLeo-HelperLib-Documentation" class="mb-5">
+                    <h3>OmegaLeo.HelperLib.Documentation</h3>
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">DocumentationHelperTool</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib.Documentation</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>GenerateDocumentation (bool generateForPackageAssembly)</code></td>
+                                                        <td><p>Generates a List of objects of type DocumentationStructure that contain the following fields:<br />
+<strong>AssemblyName</strong>: Name of the main Assembly, used to identify the root namespace<br />
+<strong>ClassName</strong>: Name of the class, used to identify the upper level object<br />
+<strong>Title</strong>: Title what we're generating documentation for<br />
+<strong>Description</strong>: Description of what we're generating documentation for, this can contain usage examples and can use the args array to pass names(e.g.: This method uses this methodology)<br />
+<strong>Args</strong>: Array of strings that describe the parameters of the method or class<br />
+<strong>CodeExample</strong>: A code example of how to use the method or class</p>
+<p><em>Note: If generateForPackageAssembly is set to true, this will generate documentation for the library as well.</em></p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+DocumentationHelperTool.GenerateDocumentation(<span style="color:#569CD6;">true</span>); <span style="color:#57A64A;">// Generates documentation for all assemblies including the DocumentationHelper.Library package assembly</span>
+DocumentationHelperTool.GenerateDocumentation(<span style="color:#569CD6;">false</span>); <span style="color:#57A64A;">// Generates documentation for all assemblies excluding the DocumentationHelper.Library package assembly</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div id="changelog" class="mb-5">
+                    <h3>Changelog</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Version 1.2.0</h2>
+<h3>January 26, 2026</h3>
+<p><strong>OmegaLeo.HelperLib.Documentation.Helpers</strong></p>
+<ul>
+<li><strong>DocumentationHelperTool</strong>:
+<ul>
+<li>Migrated DocumentationHelper library from NetFlow.DocumentationHelper.Library to it's own package in OmegaLeo.HelperLib</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .sticky-top {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+    </main>
+
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/site.js%3Fv=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM"></script>
+    
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core Library - OmegaLeo Helper Libraries</title>
+    <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/site.css%3Fv=AK2YraxbvzgrpO6A1NqAHflCP7fbweSjdyWpd3ERsLE.css" />
+</head>
+<body>
+    <header b-pqzonzw7gm>
+        <nav b-pqzonzw7gm class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div b-pqzonzw7gm class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    OmegaLeo Helper Libraries
+                </a>
+                <button b-pqzonzw7gm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span b-pqzonzw7gm class="navbar-toggler-icon"></span>
+                </button>
+                <div b-pqzonzw7gm class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-pqzonzw7gm class="navbar-nav flex-grow-1">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="core.html">Core</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="changelog.html">Changelog</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="game.html">Game Dev</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="documentation.html">Documentation</a>
+                        </li>
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a class="nav-link" href="shared.html">Shared Components</a>
+                        </li>
+                    </ul>
+                    
+                    <ul b-pqzonzw7gm class="navbar-nav ms-auto">
+                        <li b-pqzonzw7gm class="nav-item">
+                            <a b-pqzonzw7gm class="nav-link" href="https://github.com/omegaleo/HelperLib" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+                                <i b-pqzonzw7gm class="bi bi-github" style="font-size:1.25rem;"></i> View on Github
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main b-pqzonzw7gm role="main" class="pb-3">
+        
+<div class="container-fluid mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+            <li class="breadcrumb-item active">Core Library</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sticky-top" style="top: 20px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Core Library</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a class="list-group-item list-group-item-action" href="core.html#overview">
+                                <i class="bi bi-info-circle me-2"></i>Overview
+                            </a>
+                                <a class="list-group-item list-group-item-action" href="core.html#namespace-OmegaLeo-HelperLib">
+                                    <i class="bi bi-folder me-2"></i>OmegaLeo.HelperLib
+                                </a>
+                            <a class="list-group-item list-group-item-action" href="core.html#changelog">
+                                <i class="bi bi-clock-history me-2"></i>Changelog
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="overview" class="mb-5">
+                <h2>Core Library</h2>
+                <p class="lead">Core utilities and helper functions for general C# development</p>
+                <hr />
+            </div>
+
+                <div id="namespace-OmegaLeo-HelperLib" class="mb-5">
+                    <h3>OmegaLeo.HelperLib</h3>
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">ArrayExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>Array Extensions</code></td>
+                                                        <td><p>Set of extension methods to help with Arrays.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Next</code></td>
+                                                        <td><p>Method to obtain the next object in the array by passing the current index.
+Note: Idea obtained from TaroDev's video on things to do in Unity - https://youtu.be/Ic5ux-tpkCE?t=302</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">BenchmarkUtility</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>BenchmarkUtility</code></td>
+                                                        <td><p>Utility class for benchmarking code execution time.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+BenchmarkUtility.Start(<span style="color:#D69D85;">&quot;MyBenchmark&quot;</span>);
+<span style="color:#57A64A;">// Code to benchmark</span>
+BenchmarkUtility.Stop(<span style="color:#D69D85;">&quot;MyBenchmark&quot;</span>);
+<span style="color:#569CD6;">var</span> results = BenchmarkUtility.GetResults(<span style="color:#D69D85;">&quot;MyBenchmark&quot;</span>);
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Record</code></td>
+                                                        <td><p>Records the execution time of the provided action and returns the elapsed time in milliseconds.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> time = BenchmarkUtility.Record(() =&gt;
+{
+    <span style="color:#57A64A;">// Code to benchmark</span>
+});
+
+Console.WriteLine($<span style="color:#D69D85;">&quot;Elapsed time: {time} ms&quot;</span>);
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RecordAndSaveToResults</code></td>
+                                                        <td><p>Records the execution time of the provided action, saves it under the given key, and returns the elapsed time in milliseconds.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> time = BenchmarkUtility.RecordAndSaveToResults(<span style="color:#D69D85;">&quot;MyBenchmark&quot;</span>, () =&gt;
+{
+    <span style="color:#57A64A;">// Code to benchmark</span>
+});
+
+Console.WriteLine($<span style="color:#D69D85;">&quot;Elapsed time: {time} ms&quot;</span>);
+
+<span style="color:#569CD6;">var</span> results = BenchmarkUtility.GetResults(<span style="color:#D69D85;">&quot;MyBenchmark&quot;</span>);
+
+<span style="color:#569CD6;">var</span> averageTime = results.Average();
+Console.WriteLine($<span style="color:#D69D85;">&quot;Average time: {averageTime} ms&quot;</span>);
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Start</code></td>
+                                                        <td><p>Starts or restarts the stopwatch for the given key.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Stop</code></td>
+                                                        <td><p>Stops the stopwatch for the given key and records the elapsed time.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>GetResults</code></td>
+                                                        <td><p>Retrieves the list of recorded times for the given key.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ClearResults</code></td>
+                                                        <td><p>Clears all recorded benchmark results.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>GetAllResults</code></td>
+                                                        <td><p>Retrieves all recorded benchmark results.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">FloatExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>FloatExtensions</code></td>
+                                                        <td><p>Provides extension methods for the float data type.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Round</code></td>
+                                                        <td><p>Rounds a float value to the specified number of decimal places.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> originalValue = <span style="color:#B5CEA8;">3</span>.14159f;
+<span style="color:#569CD6;">var</span> roundedValue = originalValue.Round(<span style="color:#B5CEA8;">2</span>); <span style="color:#57A64A;">// roundedValue will be 3.14</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RoundToInt</code></td>
+                                                        <td><p>Rounds a float value to the nearest integer and returns it as an int.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> originalValue = <span style="color:#B5CEA8;">3</span>.14159f;
+<span style="color:#569CD6;">var</span> roundedValue = originalValue.RoundToInt(); <span style="color:#57A64A;">// roundedValue will be 3</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">IListExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>IListExtensions</code></td>
+                                                        <td><p>Extension methods for IList<T> to provide additional functionalities such as swapping, replacing, random selection, and shuffling.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Swap</code></td>
+                                                        <td><p>Swaps the elements at the specified indices in the list.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+myList.Swap(<span style="color:#B5CEA8;">0</span>, <span style="color:#B5CEA8;">2</span>); <span style="color:#57A64A;">// myList is now { 3, 2, 1, 4 }</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Swap</code></td>
+                                                        <td><p>Swaps the elements at the specified indices in the list.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+myList.Swap(<span style="color:#B5CEA8;">0</span>, <span style="color:#B5CEA8;">2</span>); <span style="color:#57A64A;">// myList is now { 3, 2, 1, 4 }</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Replace</code></td>
+                                                        <td><p>Replaces the first occurrence of a specified value in the list with a new value.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+myList.Replace(<span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">5</span>); <span style="color:#57A64A;">// myList is now { 1, 5, 3, 4 }</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Random</code></td>
+                                                        <td><p>Selects a random element from the list.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+<span style="color:#569CD6;">var</span> randomElement = myList.Random(); <span style="color:#57A64A;">// randomElement could be any of 1, 2, 3, or 4</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Random</code></td>
+                                                        <td><p>Selects a specified number of unique random elements from the list.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+<span style="color:#569CD6;">var</span> randomElements = myList.Random(<span style="color:#B5CEA8;">2</span>); <span style="color:#57A64A;">// randomElements could be any two of 1, 2, 3, or 4</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Next&lt;T&gt;</code></td>
+                                                        <td><p>Method to obtain the next object in the list by passing the current index.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>,<span style="color:#B5CEA8;">4</span> };
+<span style="color:#569CD6;">var</span> currentIndex = <span style="color:#B5CEA8;">0</span>;
+<span style="color:#569CD6;">var</span> nextItem = myList.Next(<span style="color:#569CD6;">ref</span> currentIndex); <span style="color:#57A64A;">// nextItem will be 1, currentIndex will be 1</span>
+<span style="color:#569CD6;">var</span> nextItem2 = myList.Next(<span style="color:#569CD6;">ref</span> currentIndex); <span style="color:#57A64A;">// nextItem2 will be 2, currentIndex will be 2</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Shuffle&lt;T&gt;</code></td>
+                                                        <td><p>Shuffles the elements of the list in place using a cryptographic random number generator.</p>
+<p>Code obtained from https://stackoverflow.com/a/1262619</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> myList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+myList.Shuffle(); <span style="color:#57A64A;">// myList could now be { 3, 1, 4, 2 } (example output)</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">InstancedObject`1</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>InstancedObject&lt;T&gt; Class</code></td>
+                                                        <td><p>A generic base class that ensures only one instance of a derived class exists at any time.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">public</span> <span style="color:#569CD6;">class</span> MySingleton : InstancedObject&lt;MySingleton&gt; 
+{ 
+    <span style="color:#57A64A;">// Your class implementation here</span>
+}
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">MathExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>MathExtensions</code></td>
+                                                        <td><p>Provides extension methods for mathematical operations.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AverageWithNullValidation</code></td>
+                                                        <td><p>Calculates the average of a list of integers, returning 0 if the list is empty.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> numbers = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt; { <span style="color:#B5CEA8;">1</span>, <span style="color:#B5CEA8;">2</span>, <span style="color:#B5CEA8;">3</span>, <span style="color:#B5CEA8;">4</span> };
+<span style="color:#569CD6;">int</span> average = numbers.AverageWithNullValidation(); <span style="color:#57A64A;">// average will be 2 (rounded down)</span>
+<span style="color:#569CD6;">var</span> emptyList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">int</span>&gt;();
+<span style="color:#569CD6;">int</span> averageEmpty = emptyList.AverageWithNullValidation(); <span style="color:#57A64A;">// averageEmpty will be 0</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AverageWithNullValidation</code></td>
+                                                        <td><p>Calculates the average of a list of doubles, returning 0.0 if the list is empty.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> numbers = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">double</span>&gt; { <span style="color:#B5CEA8;">1</span>.<span style="color:#B5CEA8;">5</span>, <span style="color:#B5CEA8;">2</span>.<span style="color:#B5CEA8;">5</span>, <span style="color:#B5CEA8;">3</span>.<span style="color:#B5CEA8;">5</span> };
+<span style="color:#569CD6;">double</span> average = numbers.AverageWithNullValidation(); <span style="color:#57A64A;">// average will be 2.5</span>
+<span style="color:#569CD6;">var</span> emptyList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">double</span>&gt;();
+<span style="color:#569CD6;">double</span> averageEmpty = emptyList.AverageWithNullValidation(); <span style="color:#57A64A;">// averageEmpty will be 0.0</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AverageWithNullValidation</code></td>
+                                                        <td><p>Calculates the average of a list of floats, returning 0.0f if the list is empty.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> numbers = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">float</span>&gt; { <span style="color:#B5CEA8;">1</span>.5f, <span style="color:#B5CEA8;">2</span>.5f, <span style="color:#B5CEA8;">3</span>.5f };
+<span style="color:#569CD6;">float</span> average = numbers.AverageWithNullValidation(); <span style="color:#57A64A;">// average will be 2.5f</span>
+<span style="color:#569CD6;">var</span> emptyList = <span style="color:#569CD6;">new</span> List&lt;<span style="color:#569CD6;">float</span>&gt;();
+<span style="color:#569CD6;">float</span> averageEmpty = emptyList.AverageWithNullValidation(); <span style="color:#57A64A;">// averageEmpty will be 0.0f</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">NeoDictionary`2</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>NeoDictionary</code></td>
+                                                        <td><p>Dictionary like class created to make it easier to display dictionaries in game engines like Unity</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>TryGetValue</code></td>
+                                                        <td><p>Tries to get the value from the NeoDictionary for the given key.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>TryGetValueFromIndex</code></td>
+                                                        <td><p>Tries to get the value from the NeoDictionary at the given index.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Add</code></td>
+                                                        <td><p>Adds a new NeoDictionaryItem to the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AddRange</code></td>
+                                                        <td><p>Adds a range of NeoDictionaryItems from another NeoDictionary to the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AddRange</code></td>
+                                                        <td><p>Adds a range of NeoDictionaryItems to the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Any</code></td>
+                                                        <td><p>Checks if the NeoDictionary has any items.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Any</code></td>
+                                                        <td><p>Checks if any item in the NeoDictionary satisfies a condition.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Where</code></td>
+                                                        <td><p>Filters the NeoDictionary items based on a predicate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>FirstOrDefault</code></td>
+                                                        <td><p>Returns the first item of the NeoDictionary or a default value if the NeoDictionary is empty.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>FirstOrDefault</code></td>
+                                                        <td><p>Returns the first item of the NeoDictionary that satisfies a condition or a default value if no such item is found.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>LastOrDefault</code></td>
+                                                        <td><p>Returns the last item of the NeoDictionary or a default value if the NeoDictionary is empty.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>LastOrDefault</code></td>
+                                                        <td><p>Returns the last item of the NeoDictionary that satisfies a condition or a default value if no such item is found.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Select</code></td>
+                                                        <td><p>Projects each item of the NeoDictionary into a new form.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>IndexOf</code></td>
+                                                        <td><p>Returns the index of the given NeoDictionaryItem.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Remove</code></td>
+                                                        <td><p>Removes the item with the given key.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RemoveAt</code></td>
+                                                        <td><p>Removes the item at the given index.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Replace</code></td>
+                                                        <td><p>Replaces the value for the given key if it exists.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>HasKey</code></td>
+                                                        <td><p>Checks if the NeoDictionary contains the given key.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Clear</code></td>
+                                                        <td><p>Clears all items from the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Sort</code></td>
+                                                        <td><p>Sorts the NeoDictionary items using the given comparison.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Count</code></td>
+                                                        <td><p>Returns the number of items in the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ForEach</code></td>
+                                                        <td><p>Performs the given action on each item in the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ToList</code></td>
+                                                        <td><p>Converts the NeoDictionary items to a List.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Clone</code></td>
+                                                        <td><p>Creates a shallow copy of the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Reverse</code></td>
+                                                        <td><p>Reverses the order of the items in the NeoDictionary.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Insert</code></td>
+                                                        <td><p>Inserts an item at the given index.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>InsertRange</code></td>
+                                                        <td><p>Inserts a range of items starting from the given index.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RemoveRange</code></td>
+                                                        <td><p>Removes a range of items starting from the given index.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>RemoveAll</code></td>
+                                                        <td><p>Removes all items matching the given predicate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>FindIndex</code></td>
+                                                        <td><p>Finds the index of the first item matching the given predicate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Find</code></td>
+                                                        <td><p>Finds the first item matching the given predicate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>FindAll</code></td>
+                                                        <td><p>Finds all items matching the given predicate.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Merge</code></td>
+                                                        <td><p>Merges another NeoDictionary into this one, ignoring duplicate keys.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ToDictionarySafe</code></td>
+                                                        <td><p>Converts the NeoDictionary to a standard Dictionary while safely handling duplicate keys by ignoring them.</p>
+<br/>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h4 class="mb-0">StringExtensions</h4>
+                                <small class="text-muted">OmegaLeo.HelperLib</small>
+                            </div>
+                            <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Documentation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><code>StringExtensions</code></td>
+                                                        <td><p>Provides extension methods for the string data type.</p>
+<br/>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Truncate</code></td>
+                                                        <td><p>Truncates the string to a specified maximum number of characters, appending '...' if truncation occurs.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">var</span> longString = <span style="color:#D69D85;">&quot;This is a very long string that needs to be truncated.&quot;</span>;
+<span style="color:#569CD6;">var</span> truncatedString = longString.Truncate(<span style="color:#B5CEA8;">20</span>); <span style="color:#57A64A;">// truncatedString will be &quot;This is a very long...&quot;</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>IsNullOrEmpty</code></td>
+                                                        <td><p>Checks if the string is null or empty.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">string</span> myString = <span style="color:#D69D85;">&quot;&quot;</span>;
+<span style="color:#569CD6;">bool</span> isNullOrEmpty = myString.IsNullOrEmpty(); <span style="color:#57A64A;">// isNullOrEmpty will be true</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>IsNotNullOrEmpty</code></td>
+                                                        <td><p>Checks if the string is not null or empty.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">string</span> myString = <span style="color:#D69D85;">&quot;Hello&quot;</span>;
+<span style="color:#569CD6;">bool</span> isNotNullOrEmpty = myString.IsNotNullOrEmpty(); <span style="color:#57A64A;">// isNotNullOrEmpty will be true</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>AnyMatch</code></td>
+                                                        <td><p>Checks if the string matches any of the provided search strings, ignoring case.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">string</span> myString = <span style="color:#D69D85;">&quot;Hello&quot;</span>;
+<span style="color:#569CD6;">bool</span> matches = myString.AnyMatch(<span style="color:#D69D85;">&quot;hi&quot;</span>, <span style="color:#D69D85;">&quot;hello&quot;</span>, <span style="color:#D69D85;">&quot;greetings&quot;</span>); <span style="color:#57A64A;">// matches will be true</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>Reverse</code></td>
+                                                        <td><p>Reverses the characters in the string.</p>
+<br/>
+                                                                <strong>Example:</strong><br/>
+                                                                <div class="example-code mb-2">
+                                                                    <div style="color:#DADADA;background-color:#1E1E1E;"><pre>
+<span style="color:#569CD6;">string</span> myString = <span style="color:#D69D85;">&quot;Hello&quot;</span>;
+<span style="color:#569CD6;">string</span> reversedString = myString.Reverse(); <span style="color:#57A64A;">// reversedString will be &quot;olleH&quot;</span>
+</pre></div>
+                                                                </div>
+</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div id="changelog" class="mb-5">
+                    <h3>Changelog</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Version 1.2.0</h2>
+<h3>January 28, 2026</h3>
+<p><strong>OmegaLeo.HelperLib.Extensions</strong></p>
+<ul>
+<li><strong>ArrayExtensions</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Extensions.</li>
+</ul>
+</li>
+<li><strong>FloatExtensions</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Extensions.</li>
+</ul>
+</li>
+<li><strong>IListExtensions</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Extensions.</li>
+</ul>
+</li>
+<li><strong>MathExtensions</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Extensions.</li>
+</ul>
+</li>
+<li><strong>StringExtensions</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Extensions.</li>
+</ul>
+</li>
+</ul>
+<p><strong>OmegaLeo.HelperLib.Helpers</strong></p>
+<ul>
+<li><strong>BenchmarkUtility</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Helpers.</li>
+</ul>
+</li>
+</ul>
+<p><strong>OmegaLeo.HelperLib.Models</strong></p>
+<ul>
+<li><strong>InstancedObject</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Models.</li>
+</ul>
+</li>
+<li><strong>NeoDictionary</strong>:
+<ul>
+<li>Fixed root namespace to OmegaLeo.HelperLib.Models.</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .sticky-top {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+    </main>
+
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/site.js%3Fv=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM"></script>
+    
+</body>
+</html>

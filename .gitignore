@@ -12,3 +12,5 @@ riderModule.iml
 /OmegaLeo.HelperLib.Web/publish
 >>>>>>> Stashed changes
 /OmegaLeo.HelperLib.Web/OmegaLeo.HelperLib.Web.csproj.user
+
+*.sh
