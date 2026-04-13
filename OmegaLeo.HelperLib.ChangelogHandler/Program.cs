@@ -18,6 +18,7 @@ var changelogs = new Dictionary<string, Assembly>()
     {Path.Join(root, "OmegaLeo.HelperLib.Game", "CHANGELOG.md"), typeof(OmegaLeo.HelperLib.Game.Models.ConsoleCommand).Assembly},
     {Path.Join(root, "OmegaLeo.HelperLib.Documentation", "CHANGELOG.md"), typeof(OmegaLeo.HelperLib.Documentation.Helpers.DocumentationHelperTool).Assembly},
     {Path.Join(root, "OmegaLeo.HelperLib.Shared", "CHANGELOG.md"), typeof(OmegaLeo.HelperLib.Shared.Attributes.ChangelogAttribute).Assembly},
+    {Path.Join(root, "OmegaLeo.HelperLib.Steamworks", "CHANGELOG.md"), typeof(OmegaLeo.HelperLib.Steamworks.SteamManager).Assembly},
 };
 
 foreach (var changelog in changelogs)
