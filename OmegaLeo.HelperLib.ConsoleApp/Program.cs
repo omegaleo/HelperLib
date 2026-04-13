@@ -2,101 +2,28 @@
 
 // /media/omegaleo/Development/Library Dev/HelperLib
 
-using System.Reflection;
-using OmegaLeo.HelperLib.Extensions;
-using OmegaLeo.HelperLib.Helpers;
-using LibGit2Sharp;
-using OmegaLeo.HelperLib.Changelog.Tools;
-using OmegaLeo.HelperLib.Git;
-using OmegaLeo.HelperLib.Git.Models;
+using System;
+using System.Collections.Generic;
+using OmegaLeo.HelperLib.Steamworks;
 
-Console.WriteLine("Insert repo path to check changes:");
-var repo = Console.ReadLine();
-
-if (repo.IsNullOrEmpty())
+public class Program
 {
-    repo = "/media/omegaleo/Development/Library Dev/HelperLib";
-}
-
-var git = new GitClient(repo);
-
-var result = BenchmarkUtility.Record(() =>
-{
-    var changes = git.GetChanges();
-
-    if (changes.FolderName.IsNotNullOrEmpty())
+    public static void Main()
     {
-        RecursiveOutput(new List<ChangeFolder>() { changes });
-
-        var option = 99;
-
-        while (option != 0)
+        SteamManager.ConfigureAppId(480); // 480 is the AppId for Spacewar, a test app provided by Valve
+        
+        var steam = SteamManager.Instance;
+        if (steam.IsSteamworksInitialized)
         {
-            ShowOptions();
-            if (option != 99)
-            {
-                switch (option)
-                {
-                    case 1:
-                        Console.WriteLine("Write the commit message");
-                        var msg = Console.ReadLine();
-
-                        while (msg.IsNullOrEmpty())
-                        {
-                            Console.WriteLine("Empty message detected, please write a commit message...");
-                            msg = Console.ReadLine();
-                        }
-
-                        var signature = new Signature("Nuno 'Omega Leo' Diogo", "nunodiogo@omegaleo.pt",
-                            DateTimeOffset.Now);
-                        git.Commit(msg, signature);
-
-                        break;
-                    case 2:
-                        git.Push();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Option!");
-                        break;
-                }
-            }
-
-            int.TryParse(Console.ReadLine(), out option);
-        }
-    }
-    else
-    {
-        Console.WriteLine("No changes found in specified repository");
-    }
-});
-
-Console.WriteLine($"Time for checking for changes: {result} ms");
-
-Console.ReadLine();
-
-
-void RecursiveOutput(List<ChangeFolder> folders, int depth = 0)
-{
-    foreach (var folder in folders)
-    {
-        Console.WriteLine($"{new string('\t', depth)}>{folder.FolderName}");
-        if (folder.SubFolders.Any())
-        {
-            RecursiveOutput(folder.SubFolders, depth + 1);
+            Console.WriteLine($"Welcome {steam.GetSteamName()}");
         }
 
-        foreach (var change in folder.ChangesInFolder)
-        {
-            Console.WriteLine($"{new string('\t', depth + 1)}>{Path.GetFileName(change.Path)} ({change.Status})");
-        }
-    }
-}
+        // Call this in your game loop (Unity Update, Godot _Process, etc.)
+        steam.Update();
 
-void ShowOptions()
-{
-    Console.Clear();
-    Console.WriteLine(new string('=', 20));
-    Console.WriteLine("What do you want to do in this repository?");
-    Console.WriteLine("1. Commit all changes");
-    Console.WriteLine("2. Push");
+        //var achievements = new AchievementManager();
+        //achievements.UnlockAchievement("ACH_FIRST_WIN");
+
+        steam.Shutdown();
+    }
 }
