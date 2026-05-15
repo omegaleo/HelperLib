@@ -69,6 +69,13 @@ public class HomeController : Controller
                 "Library of shared attributes and utilities used across other OmegaLeo.HelperLib packages",
                 "OmegaLeo.HelperLib.Shared"
             ),
+            ["steamworks"] = GenerateLibraryDocs(
+                typeof(OmegaLeo.HelperLib.Steamworks.SteamManager).Assembly,
+                Path.Combine(root, "changelogs", "OmegaLeo.HelperLib.Steamworks.CHANGELOG.md"),
+                "Steamworks Library",
+                "Helpers for integrating with the Steamworks API",
+                "OmegaLeo.HelperLib.Steamworks"
+            )
         };
 
         _logger.LogInformation("Initialized {Count} libraries", _libraryCache.Count);

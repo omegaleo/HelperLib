@@ -12,6 +12,7 @@ namespace OmegaLeo.HelperLib.Documentation.Helpers
 {
 
     [Changelog("1.2.0", "Migrated DocumentationHelper library from NetFlow.DocumentationHelper.Library to it's own package in OmegaLeo.HelperLib", "January 26, 2026")]
+    [Changelog("1.3.0", "GenerateDocumentation now includes method parameters and return type in the generated documentation", "April 14, 2026")]
     public static class DocumentationHelperTool
     {
         [Documentation("GenerateDocumentation (bool generateForPackageAssembly)",
@@ -21,6 +22,8 @@ namespace OmegaLeo.HelperLib.Documentation.Helpers
 **Title**: Title what we're generating documentation for  
 **Description**: Description of what we're generating documentation for, this can contain usage examples and can use the args array to pass names(e.g.: This method uses this methodology)  
 **Args**: Array of strings that describe the parameters of the method or class  
+**MethodParameters**: Reflected parameter signature list for documented methods (e.g. `value: int`, `name: string`)  
+**ReturnType**: Reflected return type for documented methods (e.g. `bool`, `List<string>`)  
 **CodeExample**: A code example of how to use the method or class  
   
 *Note: If generateForPackageAssembly is set to true, this will generate documentation for the library as well.*",
@@ -146,7 +149,12 @@ DocumentationHelperTool.GenerateDocumentation(false); // Generates documentation
             var propertyDocs = type.GetProperties().SelectMany(p =>
                 p.GetCustomAttributes(typeof(DocumentationAttribute), true).Select(x => (DocumentationAttribute)x));
             var methodDocs = type.GetMethods().SelectMany(m =>
-                m.GetCustomAttributes(typeof(DocumentationAttribute), true).Select(x => (DocumentationAttribute)x));
+                m.GetCustomAttributes(typeof(DocumentationAttribute), true)
+                    .Select(x => new
+                    {
+                        Method = m,
+                        Attribute = (DocumentationAttribute)x
+                    }));
             
             var docStructure = new DocumentationStructure(assemblyName, type.Name);
 
@@ -165,12 +173,93 @@ DocumentationHelperTool.GenerateDocumentation(false); // Generates documentation
                 docStructure.AddDescription(new DocumentationDescription(doc.Title, doc.Description, doc.Args, doc.CodeExample));
             }
 
-            foreach (var doc in methodDocs)
+            foreach (var methodDoc in methodDocs)
             {
-                docStructure.AddDescription(new DocumentationDescription(doc.Title, doc.Description, doc.Args, doc.CodeExample));
+                var reflectedParameters = GetMethodParameters(methodDoc.Method);
+                var returnType = GetFriendlyTypeName(methodDoc.Method.ReturnType);
+
+                var mergedParameters = (methodDoc.Attribute.Args ?? Array.Empty<string>())
+                    .Concat(reflectedParameters)
+                    .ToArray();
+
+                docStructure.AddDescription(new DocumentationDescription(
+                    methodDoc.Attribute.Title,
+                    methodDoc.Attribute.Description,
+                    mergedParameters,
+                    methodDoc.Attribute.CodeExample,
+                    reflectedParameters,
+                    returnType));
             }
 
             return docStructure;
+        }
+
+        static string[] GetMethodParameters(MethodInfo method)
+        {
+            return method.GetParameters()
+                .Select(parameter =>
+                {
+                    var prefix = parameter.IsOut
+                        ? "out "
+                        : parameter.ParameterType.IsByRef
+                            ? "ref "
+                            : string.Empty;
+
+                    var parameterType = parameter.ParameterType.IsByRef
+                        ? parameter.ParameterType.GetElementType() ?? parameter.ParameterType
+                        : parameter.ParameterType;
+
+                    return $"{parameter.Name}: {prefix}{GetFriendlyTypeName(parameterType)}";
+                })
+                .ToArray();
+        }
+
+        static string GetFriendlyTypeName(Type type)
+        {
+            if (type == typeof(void)) return "void";
+            if (type == typeof(bool)) return "bool";
+            if (type == typeof(byte)) return "byte";
+            if (type == typeof(sbyte)) return "sbyte";
+            if (type == typeof(char)) return "char";
+            if (type == typeof(decimal)) return "decimal";
+            if (type == typeof(double)) return "double";
+            if (type == typeof(float)) return "float";
+            if (type == typeof(int)) return "int";
+            if (type == typeof(uint)) return "uint";
+            if (type == typeof(long)) return "long";
+            if (type == typeof(ulong)) return "ulong";
+            if (type == typeof(short)) return "short";
+            if (type == typeof(ushort)) return "ushort";
+            if (type == typeof(string)) return "string";
+            if (type == typeof(object)) return "object";
+
+            if (type.IsArray)
+            {
+                return $"{GetFriendlyTypeName(type.GetElementType() ?? typeof(object))}[]";
+            }
+
+            if (type.IsGenericType)
+            {
+                var name = type.Name;
+                var tickIndex = name.IndexOf('`');
+                if (tickIndex > 0)
+                {
+                    name = name.Substring(0, tickIndex);
+                }
+
+                var genericArguments = type.GetGenericArguments()
+                    .Select(GetFriendlyTypeName);
+
+                return $"{name}<{string.Join(", ", genericArguments)}>";
+            }
+
+            var nullable = Nullable.GetUnderlyingType(type);
+            if (nullable != null)
+            {
+                return $"{GetFriendlyTypeName(nullable)}?";
+            }
+
+            return type.Name;
         }
         
         static Dictionary<string, string> loadedXmlDocumentation =
