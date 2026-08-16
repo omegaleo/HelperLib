@@ -1,5 +1,8 @@
+using System;
+
 namespace OmegaLeo.HelperLib.Changelog.Models
 {
+    [Serializable]
     public class Changelog
     {
         public string Target;
